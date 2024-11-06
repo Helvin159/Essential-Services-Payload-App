@@ -2,10 +2,16 @@ import type { CollectionConfig } from 'payload'
 
 export const Users: CollectionConfig = {
   slug: 'users',
-  admin: {
-    useAsTitle: 'email',
-  },
+  // admin: {
+  //   useAsTitle: 'email',
+  // },
   auth: true,
+  access: {
+    read: ({ req: { user } }) => Boolean(user), // Allow read access for authenticated users
+    create: () => true, // Allow anyone to create a user
+    update: ({ req: { user } }) => Boolean(user), // Allow update access for authenticated users
+    delete: ({ req: { user } }) => Boolean(user), // Allow delete access for authenticated users
+  },
   fields: [
     // Email added by default
     // Add more fields as needed
@@ -24,7 +30,7 @@ export const Users: CollectionConfig = {
       type: 'select', // Drop-down selection
       options: [
         {
-          label: 'User',
+          label: 'Contractor',
           value: 'user',
         },
         {

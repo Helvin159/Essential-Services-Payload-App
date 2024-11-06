@@ -1,7 +1,9 @@
 export default function Home() {
   return (
     <>
-      <h1>Practice</h1>
+      <section>
+        <h1>Looking for a Contractor or Someone to Clean Your Home?</h1>
+      </section>
     </>
   )
 }

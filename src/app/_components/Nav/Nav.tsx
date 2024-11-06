@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 
+import './_assets/style.css'
+
 const Nav = () => {
   const navStyles: React.CSSProperties = {
     textAlign: 'center',
@@ -23,7 +25,7 @@ const Nav = () => {
           <Link href={'/'}>Home</Link>
         </li>
         <li>
-          <Link href={'/apex-chart-demo'}>Time Series Chart</Link>
+          <Link href={'/apex-charts'}>Apex Charts</Link>
         </li>
       </ul>
     </nav>

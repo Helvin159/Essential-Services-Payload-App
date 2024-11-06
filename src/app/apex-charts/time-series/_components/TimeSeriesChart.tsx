@@ -120,9 +120,6 @@ const TimeSeriesChart = () => {
 
   return (
     <>
-      <div className="container">
-        <h1>ApexChartsJs Time Series Chart</h1>
-      </div>
       <div ref={chartRef} />
       <button value={2} onClick={updateChart}>
         2 months

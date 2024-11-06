@@ -19,14 +19,16 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+  csrf: ['http://localhost:3001'],
+  cors: ['http://localhost:3001'],
   collections: [Users, Media],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.NEXT_PUBLIC_REACT_APP_PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI || '',
+    url: process.env.NEXT_PUBLIC_REACT_APP_DATABASE_URI || '',
   }),
   sharp,
   plugins: [
