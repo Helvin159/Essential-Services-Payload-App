@@ -12,8 +12,10 @@ export interface Config {
   };
   collections: {
     users: User;
+    messages: Message;
     bookings: Booking;
     services: Service;
+    reviews: Review;
     categories: Category;
     media: Media;
     'admin-messages': AdminMessage;
@@ -24,8 +26,10 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
+    messages: MessagesSelect<false> | MessagesSelect<true>;
     bookings: BookingsSelect<false> | BookingsSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
+    reviews: ReviewsSelect<false> | ReviewsSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'admin-messages': AdminMessagesSelect<false> | AdminMessagesSelect<true>;
@@ -71,7 +75,7 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: string;
-  role: 'client' | 'service-provider';
+  role: 'client' | 'service-provider' | 'admin';
   fullName: string;
   password: string | null;
   phoneNumber?: string | null;
@@ -112,6 +116,20 @@ export interface Category {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "messages".
+ */
+export interface Message {
+  id: string;
+  sender: string | User;
+  receiver: string | User;
+  content: string;
+  sentAt: string;
+  read?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "bookings".
  */
 export interface Booking {
@@ -122,6 +140,20 @@ export interface Booking {
   bookingDate: string;
   status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
   notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews".
+ */
+export interface Review {
+  id: string;
+  client: string | User;
+  serviceProvider: string | User;
+  rating: number;
+  comment?: string | null;
+  reviewDate: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -168,12 +200,20 @@ export interface PayloadLockedDocument {
         value: string | User;
       } | null)
     | ({
+        relationTo: 'messages';
+        value: string | Message;
+      } | null)
+    | ({
         relationTo: 'bookings';
         value: string | Booking;
       } | null)
     | ({
         relationTo: 'services';
         value: string | Service;
+      } | null)
+    | ({
+        relationTo: 'reviews';
+        value: string | Review;
       } | null)
     | ({
         relationTo: 'categories';
@@ -252,6 +292,19 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "messages_select".
+ */
+export interface MessagesSelect<T extends boolean = true> {
+  sender?: T;
+  receiver?: T;
+  content?: T;
+  sentAt?: T;
+  read?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "bookings_select".
  */
 export interface BookingsSelect<T extends boolean = true> {
@@ -272,6 +325,19 @@ export interface ServicesSelect<T extends boolean = true> {
   serviceName?: T;
   description?: T;
   category?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews_select".
+ */
+export interface ReviewsSelect<T extends boolean = true> {
+  client?: T;
+  serviceProvider?: T;
+  rating?: T;
+  comment?: T;
+  reviewDate?: T;
   updatedAt?: T;
   createdAt?: T;
 }

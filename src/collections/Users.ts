@@ -10,6 +10,7 @@ export const Users: CollectionConfig = {
       options: [
         { label: 'Client', value: 'client' },
         { label: 'Service Provider', value: 'service-provider' },
+        { label: 'Administrator', value: 'admin' },
       ],
       defaultValue: 'client',
       required: true,
