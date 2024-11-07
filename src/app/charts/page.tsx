@@ -4,20 +4,14 @@ import React from 'react'
 const page = () => {
   return (
     <>
-      <section>
-        <h1>Charts</h1>
-      </section>
-      <section>
-        <h2>Options:</h2>
+      <h1>Apex Charts</h1>
+      <div>
         <ul>
           <li>
-            <Link href={'/charts/time-series'}>Apex Charts JS Time Series</Link>
-          </li>
-          <li>
-            <Link href={'/charts/chartjs-line-chart'}>ChartJs Line Chart</Link>
+            <Link href={'/apex-charts/time-series'}>Time Series</Link>
           </li>
         </ul>
-      </section>
+      </div>
     </>
   )
 }

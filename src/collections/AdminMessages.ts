@@ -9,7 +9,7 @@ export const AdminMessages: CollectionConfig = {
       required: true,
     },
     {
-      name: 'title',
+      name: 'subject',
       type: 'text',
       required: true,
     },
@@ -19,9 +19,4 @@ export const AdminMessages: CollectionConfig = {
       required: true,
     },
   ],
-  access: {
-    read: ({ req: { user } }) => !!user,
-    create: () => true,
-  },
 }
-export default AdminMessages
