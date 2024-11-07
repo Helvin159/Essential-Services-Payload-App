@@ -1,4 +1,3 @@
-// storage-adapter-import-placeholder
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
@@ -8,6 +7,10 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { AdminMessages } from './collections/AdminMessages'
+import { Services } from './collections/Services'
+import { Categories } from './collections/Categories'
+import { Bookings } from './collections/Bookings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -19,9 +22,9 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  csrf: ['http://localhost:3001'],
-  cors: ['http://localhost:3001'],
-  collections: [Users, Media],
+  csrf: ['http://localhost:3000'],
+  cors: ['http://localhost:3000'],
+  collections: [Users, Bookings, Services, Categories, Media, AdminMessages],
   editor: lexicalEditor(),
   secret: process.env.NEXT_PUBLIC_REACT_APP_PAYLOAD_SECRET || '',
   typescript: {
