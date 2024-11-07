@@ -4,25 +4,14 @@ import Link from 'next/link'
 import './_assets/style.css'
 
 const Nav = () => {
-  const navStyles: React.CSSProperties = {
-    textAlign: 'center',
-    padding: '1rem 0 2rem',
-  }
-
   return (
-    <nav className="text-center" style={{ ...navStyles }}>
-      <ul
-        style={{
-          display: 'flex',
-          listStyleType: 'none',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: '6px',
-          padding: '0',
-        }}
-      >
+    <nav className="text-center">
+      <ul>
         <li>
           <Link href={'/'}>Home</Link>
+        </li>
+        <li>
+          <Link href={'/service-pros'}>Our Pros</Link>
         </li>
         <li>
           <Link href={'/apex-charts'}>Apex Charts</Link>

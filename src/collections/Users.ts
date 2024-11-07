@@ -2,9 +2,9 @@ import type { CollectionConfig } from 'payload'
 
 export const Users: CollectionConfig = {
   slug: 'users',
-  // admin: {
-  //   useAsTitle: 'email',
-  // },
+  admin: {
+    useAsTitle: 'email',
+  },
   auth: true,
   access: {
     read: ({ req: { user } }) => Boolean(user), // Allow read access for authenticated users
@@ -30,7 +30,7 @@ export const Users: CollectionConfig = {
       type: 'select', // Drop-down selection
       options: [
         {
-          label: 'Contractor',
+          label: 'User',
           value: 'user',
         },
         {
@@ -44,6 +44,30 @@ export const Users: CollectionConfig = {
       ],
       defaultValue: 'user', // Sets the default role to "User"
       required: true,
+    },
+    {
+      name: 'profession',
+      type: 'select', // Drop-down selection
+      options: [
+        {
+          label: 'Contractor',
+          value: 'contractor',
+        },
+        {
+          label: 'Maintenance',
+          value: 'maintenance',
+        },
+        {
+          label: 'Hair Dresser',
+          value: 'hair-dresser',
+        },
+        {
+          label: 'Web Developer',
+          value: 'web-developer',
+        },
+      ],
+      defaultValue: 'contractor', // Sets the default role to "User"
+      required: false,
     },
     {
       name: 'dateOfBirth',
