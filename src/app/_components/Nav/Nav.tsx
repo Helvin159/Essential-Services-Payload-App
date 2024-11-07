@@ -14,7 +14,7 @@ const Nav = () => {
           <Link href={'/service-pros'}>Our Pros</Link>
         </li>
         <li>
-          <Link href={'/apex-charts'}>Apex Charts</Link>
+          <Link href={'/charts'}>Charts</Link>
         </li>
       </ul>
     </nav>

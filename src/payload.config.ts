@@ -8,6 +8,7 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import AdminMessages from './collections/AdminMessages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -21,7 +22,7 @@ export default buildConfig({
   },
   csrf: ['http://localhost:3001'],
   cors: ['http://localhost:3001'],
-  collections: [Users, Media],
+  collections: [Users, Media, AdminMessages],
   editor: lexicalEditor(),
   secret: process.env.NEXT_PUBLIC_REACT_APP_PAYLOAD_SECRET || '',
   typescript: {
