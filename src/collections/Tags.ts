@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
-const Tags: CollectionConfig = {
+export const Tags: CollectionConfig = {
   slug: 'tags',
   admin: {
     useAsTitle: 'name',
@@ -19,5 +19,3 @@ const Tags: CollectionConfig = {
     },
   ],
 }
-
-export default Tags

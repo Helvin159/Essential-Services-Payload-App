@@ -14,7 +14,7 @@ import { Messages } from './collections/Messages'
 import { Reviews } from './collections/Reviews'
 import { Admins } from './collections/Admins'
 import { Pages } from './collections/Pages'
-import Tags from './collections/Tags'
+import { Tags } from './collections/Tags'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)

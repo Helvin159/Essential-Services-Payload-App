@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import payload from 'payload'
-import { createUser } from '../../_utils/utils'
+import { getPayloadHMR } from '@payloadcms/next/utilities'
+import config from '@payload-config'
 
 export async function POST(req: NextRequest) {
+  const payload = await getPayloadHMR({ config })
+
   try {
     const { fullName, email, password, role } = await req.json()
 
