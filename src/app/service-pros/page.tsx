@@ -16,6 +16,41 @@ export default async function Page() {
     })
     .then((data) => data.docs)
 
+  // await payload.create({
+  //   collection: 'pages',
+  //   data: {
+  //     title: 'Yerr',
+  //     slug: 'yerr-whats',
+  //     status: 'published',
+  //     content: {
+  //       root: {
+  //         type: 'root',
+  //         children: [
+  //           {
+  //             type: 'heading',
+  //             tag: 'h2',
+  //             children: [
+  //               {
+  //                 type: 'text',
+  //                 text: 'Welcome to yerr whats up',
+  //                 version: 1,
+  //               },
+  //             ],
+  //             direction: null,
+  //             format: '', // Set to an empty string if no specific format is needed
+  //             indent: 0,
+  //             version: 1,
+  //           },
+  //         ],
+  //         direction: null,
+  //         format: '', // Set to an empty string if no specific format is needed
+  //         indent: 0,
+  //         version: 1,
+  //       },
+  //     },
+  //   },
+  // })
+
   return (
     <>
       <section className="header">

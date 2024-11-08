@@ -6,6 +6,10 @@ export const Pages: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'status', 'publishDate'],
   },
+  access: {
+    update: () => true,
+    create: () => true,
+  },
   fields: [
     {
       name: 'title',
@@ -16,7 +20,7 @@ export const Pages: CollectionConfig = {
       name: 'slug',
       type: 'text',
       unique: true,
-      required: false,
+      required: true, // Set to true if slug is mandatory
       admin: {
         position: 'sidebar',
       },
@@ -29,7 +33,7 @@ export const Pages: CollectionConfig = {
     {
       name: 'author',
       type: 'relationship',
-      relationTo: 'admins', // Ensure you have a 'users' collection
+      relationTo: 'admins', // Ensure 'admins' collection exists
       required: false,
       admin: {
         position: 'sidebar',
@@ -69,7 +73,7 @@ export const Pages: CollectionConfig = {
     {
       name: 'featuredImage',
       type: 'upload',
-      relationTo: 'media', // Ensure you have a 'media' collection
+      relationTo: 'media', // Ensure 'media' collection exists
     },
     {
       name: 'metaDescription',
@@ -81,7 +85,7 @@ export const Pages: CollectionConfig = {
     {
       name: 'tags',
       type: 'relationship',
-      relationTo: 'tags', // Ensure you have a 'tags' collection
+      relationTo: 'tags', // Ensure 'tags' collection exists
       hasMany: true,
     },
     {

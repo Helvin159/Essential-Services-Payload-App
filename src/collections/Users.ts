@@ -19,6 +19,11 @@ export const Users: CollectionConfig = {
       required: true,
     },
     {
+      name: 'featuredImage',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
       name: 'fullName',
       type: 'text',
       required: true,

@@ -2,26 +2,29 @@ import type { CollectionConfig } from 'payload'
 
 export const Admins: CollectionConfig = {
   slug: 'admins',
-  auth: true,
+  auth: {
+    useAPIKey: true,
+  },
   admin: {
-    useAsTitle: 'email',
+    useAsTitle: 'firstName',
   },
   fields: [
     {
       name: 'role',
-      type: 'text',
+      type: 'select',
+      options: [{ label: 'Administrator', value: 'admin' }],
       defaultValue: 'admin',
       required: true,
     },
     {
-      name: 'first name',
+      name: 'firstName',
       type: 'text',
-      required: true,
+      required: false,
     },
     {
-      name: 'last name',
+      name: 'lastName',
       type: 'text',
-      required: true,
+      required: false,
     },
     {
       name: 'email',

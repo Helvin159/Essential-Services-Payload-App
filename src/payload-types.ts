@@ -103,6 +103,7 @@ export interface AdminAuthOperations {
 export interface User {
   id: string;
   role: 'client' | 'service-provider' | 'admin';
+  featuredImage?: (string | null) | Media;
   fullName: string;
   password: string | null;
   phoneNumber?: string | null;
@@ -117,6 +118,25 @@ export interface User {
   hash?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: string;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -178,7 +198,7 @@ export interface Message {
 export interface Page {
   id: string;
   title: string;
-  slug?: string | null;
+  slug: string;
   content?: {
     root: {
       type: string;
@@ -214,14 +234,17 @@ export interface Page {
  */
 export interface Admin {
   id: string;
-  role: string;
-  'first name': string;
-  'last name': string;
+  role: 'admin';
+  firstName?: string | null;
+  lastName?: string | null;
   password: string | null;
   phoneNumber?: string | null;
   address?: string | null;
   updatedAt: string;
   createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
   email: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;
@@ -229,25 +252,6 @@ export interface Admin {
   hash?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: string;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -379,6 +383,7 @@ export interface PayloadMigration {
  */
 export interface UsersSelect<T extends boolean = true> {
   role?: T;
+  featuredImage?: T;
   fullName?: T;
   password?: T;
   phoneNumber?: T;
@@ -512,13 +517,16 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface AdminsSelect<T extends boolean = true> {
   role?: T;
-  'first name'?: T;
-  'last name'?: T;
+  firstName?: T;
+  lastName?: T;
   password?: T;
   phoneNumber?: T;
   address?: T;
   updatedAt?: T;
   createdAt?: T;
+  enableAPIKey?: T;
+  apiKey?: T;
+  apiKeyIndex?: T;
   email?: T;
   resetPasswordToken?: T;
   resetPasswordExpiration?: T;

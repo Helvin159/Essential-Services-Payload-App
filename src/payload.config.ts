@@ -20,17 +20,12 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_REACT_APP_PAYLOAD_SERVER_URL || 'localhost:3000',
+  serverURL: 'localhost:3000',
   admin: {
     user: 'admins',
     importMap: {
       baseDir: path.resolve(dirname),
     },
-    // components: {
-    //   navigation: {
-    //     header: 'src/app/_components/Nav/Nav.tsx#Nav',
-    //   },
-    // },
   },
   csrf: ['http://localhost:3000'],
   cors: ['http://localhost:3000'],
