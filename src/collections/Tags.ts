@@ -1,15 +1,17 @@
 import type { CollectionConfig } from 'payload'
 
-export const Categories: CollectionConfig = {
-  slug: 'categories',
+const Tags: CollectionConfig = {
+  slug: 'tags',
   admin: {
-    useAsTitle: 'categoryName',
+    useAsTitle: 'name',
+    defaultColumns: ['name', 'description'],
   },
   fields: [
     {
-      name: 'categoryName',
+      name: 'name',
       type: 'text',
       required: true,
+      unique: true,
     },
     {
       name: 'description',
@@ -17,3 +19,5 @@ export const Categories: CollectionConfig = {
     },
   ],
 }
+
+export default Tags

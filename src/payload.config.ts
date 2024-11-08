@@ -7,26 +7,45 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
-import { AdminMessages } from './collections/AdminMessages'
 import { Services } from './collections/Services'
 import { Categories } from './collections/Categories'
 import { Bookings } from './collections/Bookings'
 import { Messages } from './collections/Messages'
 import { Reviews } from './collections/Reviews'
+import { Admins } from './collections/Admins'
+import { Pages } from './collections/Pages'
+import Tags from './collections/Tags'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  serverURL: process.env.NEXT_PUBLIC_REACT_APP_PAYLOAD_SERVER_URL || 'localhost:3000',
   admin: {
-    user: Users.slug,
+    user: 'admins',
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    // components: {
+    //   navigation: {
+    //     header: 'src/app/_components/Nav/Nav.tsx#Nav',
+    //   },
+    // },
   },
   csrf: ['http://localhost:3000'],
   cors: ['http://localhost:3000'],
-  collections: [Users, Messages, Bookings, Services, Reviews, Categories, Media, AdminMessages],
+  collections: [
+    Users,
+    Bookings,
+    Messages,
+    Services,
+    Pages,
+    Reviews,
+    Categories,
+    Tags,
+    Media,
+    Admins,
+  ],
   editor: lexicalEditor(),
   secret: process.env.NEXT_PUBLIC_REACT_APP_PAYLOAD_SECRET || '',
   typescript: {

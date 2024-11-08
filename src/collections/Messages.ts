@@ -1,7 +1,10 @@
-import { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload'
 
 export const Messages: CollectionConfig = {
   slug: 'messages',
+  admin: {
+    useAsTitle: 'subject',
+  },
   fields: [
     {
       name: 'sender',
@@ -13,6 +16,11 @@ export const Messages: CollectionConfig = {
       name: 'receiver',
       type: 'relationship',
       relationTo: 'users',
+      required: true,
+    },
+    {
+      name: 'subject',
+      type: 'text',
       required: true,
     },
     {
