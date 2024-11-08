@@ -6,9 +6,9 @@ import DefaultTemplate from '../_components/DefaultTemplate/DefaultTemplate'
 
 import './_assets/style.css'
 
-const Page = async ({ params }: { params: { pages: string } }) => {
+const Page = async ({ params }: { params: Promise<{ pages: string }> }) => {
   const payload = await getPayloadHMR({ config })
-  const slug = await params.pages
+  const { pages: slug } = await params
 
   const result = await payload
     .find({
