@@ -1,11 +1,12 @@
 'use client'
+import payload from 'payload'
 import React, { Fragment } from 'react'
+import dynamic from 'next/dynamic'
 
 const TimeSeriesChart = dynamic(() => import('./_components/TimeSeriesChart'), {
   ssr: false,
 })
 import './page.css'
-import dynamic from 'next/dynamic'
 
 const page = () => {
   return (

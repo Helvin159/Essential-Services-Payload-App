@@ -13,15 +13,15 @@ export default async function Page() {
   }
   const data: User = await res.json()
 
-  await payload.create({
-    collection: 'users',
-    data: {
-      fullName: 'Rosa Parks',
-      password: 'password10',
-      role: 'client',
-      email: 'rosa@gmail.com',
-    },
-  })
+  // await payload.create({
+  //   collection: 'users',
+  //   data: {
+  //     fullName: 'Rosa Parks',
+  //     password: 'password10',
+  //     role: 'client',
+  //     email: 'rosa@gmail.com',
+  //   },
+  // })
   // payload.create({
   //   collection: 'messages',
   //   data: {

@@ -8,7 +8,7 @@ const page = () => {
       <div>
         <ul>
           <li>
-            <Link href={'/apex-charts/time-series'}>Time Series</Link>
+            <Link href={'/charts/time-series'}>Time Series</Link>
           </li>
         </ul>
       </div>
