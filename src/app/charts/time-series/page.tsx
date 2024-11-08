@@ -7,6 +7,7 @@ const TimeSeriesChart = dynamic(() => import('./_components/TimeSeriesChart'), {
   ssr: false,
 })
 import './page.css'
+import { createUser } from '@/app/_utils/utils'
 
 const page = () => {
   return (
@@ -17,6 +18,9 @@ const page = () => {
       <section>
         <TimeSeriesChart />
       </section>
+      <button onClick={() => createUser('helvin', 'helvin@g.com', 'password10', 'client')}>
+        Click for test
+      </button>
     </Fragment>
   )
 }
