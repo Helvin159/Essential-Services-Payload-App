@@ -5,8 +5,8 @@ import Footer from '../_components/Footer'
 import '../_assets/css/style.css'
 
 export const metadata: Metadata = {
-  title: 'Payload Practice',
-  description: 'Payload CMS',
+  title: 'Home Heros',
+  description: 'Home Heros Payload CMS',
 }
 
 export default function RootLayout({

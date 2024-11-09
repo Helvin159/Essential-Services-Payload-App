@@ -20,7 +20,7 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
-  serverURL: 'localhost:3000',
+  serverURL: 'https://needaservice.mrrymer.com/',
   admin: {
     user: 'admins',
     importMap: {
