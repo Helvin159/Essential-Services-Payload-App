@@ -13,6 +13,9 @@ const nextConfig = {
       },
     ],
   },
+  stats: {
+    warningsFilter: /No serializer registered for Warning/,
+  },
 }
 
 export default withPayload(nextConfig)

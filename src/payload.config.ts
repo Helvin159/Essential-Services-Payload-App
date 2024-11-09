@@ -23,7 +23,7 @@ const serverUrl =
 export default buildConfig({
   serverURL: serverUrl,
   admin: {
-    user: 'admins',
+    user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
     },
