@@ -2,7 +2,7 @@ import React from 'react'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
 
-import DefaultTemplate from '../_components/DefaultTemplate/DefaultTemplate'
+import DefaultTemplate from '../../_components/DefaultTemplate/DefaultTemplate'
 
 import './_assets/style.css'
 

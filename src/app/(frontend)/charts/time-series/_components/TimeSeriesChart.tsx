@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ApexCharts from 'apexcharts'
 
-import { interestRateData } from '../../../_utils/interestRateData'
+import { interestRateData } from '../../../../_utils/interestRateData'
 
 import './TimeSeriesChart.css'
 

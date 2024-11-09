@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import Nav from './_components/Nav/Nav'
-import Footer from './_components/Footer'
+import Nav from '../_components/Nav/Nav'
+import Footer from '../_components/Footer'
 
 export const metadata: Metadata = {
   title: 'Payload Practice',
