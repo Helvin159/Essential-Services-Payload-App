@@ -2,9 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const Admins: CollectionConfig = {
   slug: 'admins',
-  auth: {
-    useAPIKey: true,
-  },
+  auth: true,
   admin: {
     useAsTitle: 'firstName',
   },
@@ -45,4 +43,10 @@ export const Admins: CollectionConfig = {
       type: 'text',
     },
   ],
+  access: {
+    read: () => true,
+    create: () => true,
+    update: () => true,
+    delete: () => true,
+  },
 }

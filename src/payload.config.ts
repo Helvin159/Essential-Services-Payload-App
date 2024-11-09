@@ -19,11 +19,11 @@ import { Tags } from './collections/Tags'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 const serverUrl =
-  process.env.NODE_ENV === 'development' ? 'localhost:3099' : 'https://needaservice.mrrymer.com/'
+  process.env.NODE_ENV === 'development' ? 'localhost:3000' : 'https://needaservice.mrrymer.com/'
 export default buildConfig({
   serverURL: serverUrl,
   admin: {
-    user: Users.slug,
+    user: 'admins',
     importMap: {
       baseDir: path.resolve(dirname),
     },
