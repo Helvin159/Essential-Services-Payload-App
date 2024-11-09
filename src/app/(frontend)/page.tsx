@@ -1,6 +1,7 @@
 import ServiceSearch from '../_components/ServiceSearch/ServiceSearch'
 
 export default function Home() {
+  console.log(process.env.NODE_ENV)
   return (
     <>
       <section>
