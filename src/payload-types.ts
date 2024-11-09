@@ -156,7 +156,7 @@ export interface Service {
  */
 export interface Category {
   id: string;
-  categoryName: string;
+  categoryName?: string | null;
   description?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -221,7 +221,7 @@ export interface Page {
   metaDescription?: string | null;
   tags?: (string | Tag)[] | null;
   parentPage?: (string | null) | Page;
-  template?: ('default' | 'landing' | 'blog') | null;
+  template?: ('default' | 'landing' | 'blog' | 'article') | null;
   redirectURL?: string | null;
   customCSS?: string | null;
   customJavaScript?: string | null;

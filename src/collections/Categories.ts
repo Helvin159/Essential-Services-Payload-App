@@ -9,7 +9,7 @@ export const Categories: CollectionConfig = {
     {
       name: 'categoryName',
       type: 'text',
-      required: true,
+      required: false,
     },
     {
       name: 'description',

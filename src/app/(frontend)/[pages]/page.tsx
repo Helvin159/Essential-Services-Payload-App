@@ -2,9 +2,9 @@ import React from 'react'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
 
-import DefaultTemplate from '../../_components/DefaultTemplate/DefaultTemplate'
-
-import './_assets/style.css'
+import DefaultTemplate from '@/app/_components/DefaultTemplate/DefaultTemplate'
+import ArticleTemplate from '@/app/_components/ArticleTemplate/ArticleTemplate'
+import BlogTemplate from '@/app/_components/BlogTemplate/BlogTemplate'
 
 const Page = async ({ params }: { params: Promise<{ pages: string }> }) => {
   const payload = await getPayloadHMR({ config })
@@ -21,12 +21,13 @@ const Page = async ({ params }: { params: Promise<{ pages: string }> }) => {
     })
     .then((data) => data.docs)
 
-  console.log(result)
-
-  const { title, template, content, createdAt } = result[0]
+  const { title, template, content } = result[0]
 
   switch (template) {
-    case 'default':
+    case 'blog':
+      return <BlogTemplate />
+    case 'article':
+      return <ArticleTemplate />
     default:
       return <DefaultTemplate title={title} content={content} />
   }

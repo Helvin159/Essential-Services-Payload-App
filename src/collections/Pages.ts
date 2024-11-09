@@ -112,6 +112,10 @@ export const Pages: CollectionConfig = {
           label: 'Blog Post',
           value: 'blog',
         },
+        {
+          label: 'Article',
+          value: 'article',
+        },
       ],
       defaultValue: 'default',
     },

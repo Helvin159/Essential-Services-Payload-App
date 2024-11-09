@@ -13,7 +13,8 @@
     "generate:types": "payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "sass": "node-sass src/app/_sass/main.scss src/app/_assets/css/style.css -w"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "^3.0.0-beta.126",
@@ -29,6 +30,7 @@
     "graphql": "^16.8.1",
     "install": "^0.13.0",
     "next": "15.0.0",
+    "node-sass": "^9.0.0",
     "nodemailer": "^6.9.16",
     "npm": "^10.9.0",
     "payload": "^3.0.0-beta.126",

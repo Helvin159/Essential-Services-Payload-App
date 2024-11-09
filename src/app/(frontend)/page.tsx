@@ -1,11 +1,19 @@
+import ServiceSearch from '../_components/ServiceSearch/ServiceSearch'
+
 export default function Home() {
   return (
     <>
       <section>
-        <h1>Search Here!</h1>
-        <label htmlFor="search-bar">Search</label>
-        <input id="search-bar" type="text" />
-        <button>Search</button>
+        <div className="home-header">
+          <h1>Search Here!</h1>
+        </div>
+        <ServiceSearch />
+      </section>
+      <section>
+        <h2>Articles</h2>
+      </section>
+      <section>
+        <h2>Other Content</h2>
       </section>
     </>
   )

@@ -3,8 +3,6 @@ import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
 import Card from './_components/Card'
 
-import './_assets/styles.css'
-
 export default async function Page() {
   const payload = await getPayloadHMR({ config })
 

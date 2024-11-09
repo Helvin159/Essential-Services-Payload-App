@@ -1,0 +1,69 @@
+:root {
+  --box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+  --input-btn-height: 3rem;
+}
+
+.service-search {
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  & label {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+  }
+
+  & input {
+    width: 100%;
+    height: var(--input-btn-height);
+    padding: 0 1rem;
+    border: none;
+    font-size: 1rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+  }
+
+  & button {
+    background-color: black;
+    color: white;
+    padding: 0 1rem;
+    font-size: 1.125rem;
+    height: var(--input-btn-height);
+    border: none;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+  }
+}
+
+.service-search-results {
+  padding: 1rem;
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+
+  &-card {
+    flex-basis: 32%;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}

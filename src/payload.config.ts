@@ -27,8 +27,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  csrf: ['http://localhost:3000'],
-  cors: ['http://localhost:3000'],
+  csrf: ['http://localhost:3000', 'http://localhost:3001'],
+  cors: ['http://localhost:3000', 'http://localhost:3001'],
   collections: [
     Users,
     Bookings,
