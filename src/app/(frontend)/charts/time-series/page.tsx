@@ -18,9 +18,6 @@ const page = () => {
       <section>
         <TimeSeriesChart />
       </section>
-      <button onClick={() => createUser('helvin', 'helvin@g.com', 'password10', 'client')}>
-        Click for test
-      </button>
     </Fragment>
   )
 }
