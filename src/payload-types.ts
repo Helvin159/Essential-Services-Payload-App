@@ -15,10 +15,10 @@ export interface Config {
     users: User;
     bookings: Booking;
     messages: Message;
+    categories: Category;
     services: Service;
     pages: Page;
     reviews: Review;
-    categories: Category;
     tags: Tag;
     media: Media;
     admins: Admin;
@@ -31,10 +31,10 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     bookings: BookingsSelect<false> | BookingsSelect<true>;
     messages: MessagesSelect<false> | MessagesSelect<true>;
+    categories: CategoriesSelect<false> | CategoriesSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     reviews: ReviewsSelect<false> | ReviewsSelect<true>;
-    categories: CategoriesSelect<false> | CategoriesSelect<true>;
     tags: TagsSelect<false> | TagsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     admins: AdminsSelect<false> | AdminsSelect<true>;
@@ -295,6 +295,10 @@ export interface PayloadLockedDocument {
         value: string | Message;
       } | null)
     | ({
+        relationTo: 'categories';
+        value: string | Category;
+      } | null)
+    | ({
         relationTo: 'services';
         value: string | Service;
       } | null)
@@ -305,10 +309,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'reviews';
         value: string | Review;
-      } | null)
-    | ({
-        relationTo: 'categories';
-        value: string | Category;
       } | null)
     | ({
         relationTo: 'tags';
@@ -426,6 +426,16 @@ export interface MessagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories_select".
+ */
+export interface CategoriesSelect<T extends boolean = true> {
+  categoryName?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "services_select".
  */
 export interface ServicesSelect<T extends boolean = true> {
@@ -467,16 +477,6 @@ export interface ReviewsSelect<T extends boolean = true> {
   rating?: T;
   comment?: T;
   reviewDate?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories_select".
- */
-export interface CategoriesSelect<T extends boolean = true> {
-  categoryName?: T;
-  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -8,20 +8,25 @@ const ServiceSearch = () => {
   const [users, setUsers] = useState<any>(null)
 
   const handleSearch = async (e: any) => {
-    try {
-      const results = await fetch('/api/find-by-service-offered', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ searchVal }),
-      })
-      const data: User[] = await results.json()
+    console.log(e.target.value)
+    if (e.target.value === '') {
+      setUsers(null)
+    } else {
+      try {
+        const results = await fetch('/api/find-by-service-offered', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ searchVal }),
+        })
+        const data: User[] = await results.json()
 
-      setUsers(data)
-      console.log(users)
-    } catch (e) {
-      console.error(e)
+        setUsers(data)
+        console.log(users)
+      } catch (e) {
+        console.error(e)
+      }
     }
   }
 
@@ -33,17 +38,12 @@ const ServiceSearch = () => {
           id="search-bar"
           type="text"
           placeholder="Start your search for the hero you need..."
-          onChange={(e) => setSearchVal(e.target.value)}
+          onKeyUp={handleSearch}
         />
-        <button onClick={handleSearch}>Search</button>
       </div>
       <div className="service-search-results">
         {users?.map((i: User, k: number) => {
-          return (
-            <>
-              <ServiceProviderCard user={i} />
-            </>
-          )
+          return <ServiceProviderCard user={i} key={k} />
         })}
       </div>
     </>

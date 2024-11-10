@@ -1,3 +1,4 @@
+import HomeArticlesSlider from '../_components/HomeArticlesSlider/HomeArticlesSlider'
 import ServiceSearch from '../_components/ServiceSearch/ServiceSearch'
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       </section>
       <section>
         <h2>Articles</h2>
+        <HomeArticlesSlider />
       </section>
       <section>
         <h2>Other Content</h2>

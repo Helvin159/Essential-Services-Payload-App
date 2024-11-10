@@ -22,9 +22,16 @@ i {
   font-style: italic;
 }
 
+section {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 // Components
 @import './components/service-search';
 @import './components/nav';
+@import './components/home-articles-slider';
+@import './components/footer';
 
 // Pages
 @import './pages/home';

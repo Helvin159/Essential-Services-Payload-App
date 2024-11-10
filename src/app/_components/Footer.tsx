@@ -1,9 +1,11 @@
+import Link from 'next/link'
 import React from 'react'
 
 const Footer = () => {
   return (
-    <footer style={{ textAlign: 'center' }}>
+    <footer>
       <p>Home Heros</p>
+      <Link href="/admin">Admin</Link>
     </footer>
   )
 }

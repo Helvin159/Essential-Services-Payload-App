@@ -15,6 +15,9 @@ export async function POST(req: NextRequest) {
         .find({
           collection: 'users',
           where: {
+            // role: {
+            //   equals: 'service-provider',
+            // },
             // servicesOffered: {
             //   contains: searchVal,
             // },
@@ -22,6 +25,7 @@ export async function POST(req: NextRequest) {
               contains: searchVal,
             },
           },
+          limit: 0,
         })
         .then((data) => data.docs)
 

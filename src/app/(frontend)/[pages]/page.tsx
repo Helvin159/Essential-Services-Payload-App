@@ -27,7 +27,7 @@ const Page = async ({ params }: { params: Promise<{ pages: string }> }) => {
     case 'blog':
       return <BlogTemplate />
     case 'article':
-      return <ArticleTemplate />
+      return <ArticleTemplate title={title} content={content} />
     default:
       return <DefaultTemplate title={title} content={content} />
   }
