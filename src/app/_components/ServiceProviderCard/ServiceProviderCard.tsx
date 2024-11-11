@@ -1,14 +1,16 @@
+import Link from 'next/link'
 import { User } from 'payload'
 import React from 'react'
 
 const ServiceProviderCard = ({ user }: { user: User }) => {
   const memberSince = new Date(user.createdAt).toDateString()
+
   return (
-    <div className="service-provider-card">
+    <Link href={`/service-provider/${user.slug}`} className="service-provider-card">
       <h3>{user.fullName}</h3>
-      <a>{user.phoneNumber}</a>
+      <p>{user.phoneNumber}</p>
       <p>Member since {memberSince}</p>
-    </div>
+    </Link>
   )
 }
 

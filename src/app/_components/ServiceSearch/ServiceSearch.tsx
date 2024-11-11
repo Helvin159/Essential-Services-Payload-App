@@ -4,34 +4,50 @@ import { User } from 'payload'
 import ServiceProviderCard from '../ServiceProviderCard/ServiceProviderCard'
 
 const ServiceSearch = () => {
-  const [searchVal, setSearchVal] = useState<String>('')
-  const [users, setUsers] = useState<any>(null)
+  const [users, setUsers] = useState<Array<User> | null>(null)
+  const [fetching, setFetching] = useState<Boolean>(false)
 
-  const handleSearch = async (e: any) => {
-    console.log(e.target.value)
+  const handleSearch = (e: any) => {
+    // If input is empty, set users to null and return
     if (e.target.value === '') {
       setUsers(null)
-    } else {
-      try {
-        const results = await fetch('/api/find-by-service-offered', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ searchVal }),
-        })
-        const data: User[] = await results.json()
+      return
+    }
 
-        setUsers(data)
-        console.log(users)
-      } catch (e) {
-        console.error(e)
-      }
+    if (fetching === false) {
+      // Set fetching to true
+      setFetching(true)
+
+      // Fetch
+      setTimeout(async () => {
+        try {
+          const results = await fetch('/api/find-by-service-offered', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ value: e.target.value }),
+          })
+          const data: User[] = await results.json()
+
+          // Set Users
+          setUsers(data)
+
+          // Set fetching to false
+          setFetching(false)
+        } catch (e) {
+          // Log Error message
+          console.error(e)
+
+          // Set fetching to false
+          setFetching(false)
+        }
+      }, 100)
     }
   }
 
   return (
-    <>
+    <div className="service-search-wrapper">
       <div className="service-search">
         <label htmlFor="search-bar">Search</label>
         <input
@@ -41,12 +57,13 @@ const ServiceSearch = () => {
           onKeyUp={handleSearch}
         />
       </div>
-      <div className="service-search-results">
-        {users?.map((i: User, k: number) => {
-          return <ServiceProviderCard user={i} key={k} />
-        })}
+      <div className={`service-search-results ${users ? 'active' : 'inactive'}`}>
+        {users !== undefined &&
+          users?.map((i: User, k: number) => {
+            return <ServiceProviderCard user={i} key={k} />
+          })}
       </div>
-    </>
+    </div>
   )
 }
 

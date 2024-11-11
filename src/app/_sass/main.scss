@@ -23,7 +23,7 @@ i {
 }
 
 section {
-  max-width: 900px;
+  max-width: 1024px;
   margin: 0 auto;
 }
 
@@ -36,3 +36,4 @@ section {
 // Pages
 @import './pages/home';
 @import './pages/our-heros';
+@import './pages/service-provider';

@@ -1,36 +1,44 @@
-import { getPayloadHMR } from '@payloadcms/next/utilities'
-import config from '@payload-config'
+'use client'
 import React from 'react'
 import Link from 'next/link'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
-const HomeArticlesSlider = async () => {
-  const payload = await getPayloadHMR({ config })
-  const results = await payload
-    .find({
-      collection: 'pages',
-      where: {
-        template: {
-          equals: 'article',
-        },
-      },
-    })
-    .then((data) => data.docs)
+import 'swiper/css'
 
-  console.log(results)
-
+const HomeArticlesSlider = ({ users }: any) => {
   return (
-    <div className="home__articles">
-      {results.map((i, k) => {
+    <Swiper spaceBetween={50} slidesPerView={3}>
+      {users.map((i: any, k: number) => {
         return (
-          <Link href={`/${i.slug}`} className="home__articles__card" key={k}>
-            <div className="home__articles__card__header">
-              <h1>{i.title}</h1>
-            </div>
-          </Link>
+          <SwiperSlide>
+            <Link href={`/${i.slug}`} className="home__articles__card" key={k}>
+              <div className="home__articles__card__header">
+                <h1>{i.title}</h1>
+              </div>
+            </Link>
+          </SwiperSlide>
         )
       })}
-    </div>
+    </Swiper>
   )
+
+  // return (
+  //   <div className="">
+  //     <div className="swiper">
+  //       <div className="swiper-wrapper">
+  //         {users.map((i, k) => {
+  //           return (
+  //             <Link href={`/${i.slug}`} className="home__articles__card" key={k}>
+  //               <div className="home__articles__card__header">
+  //                 <h1>{i.title}</h1>
+  //               </div>
+  //             </Link>
+  //           )
+  //         })}
+  //       </div>
+  //     </div>
+  //   </div>
+  // )
 }
 
 export default HomeArticlesSlider

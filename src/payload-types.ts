@@ -104,11 +104,29 @@ export interface User {
   id: string;
   role: 'client' | 'service-provider' | 'admin';
   featuredImage?: (string | null) | Media;
+  featuredImageUrl?: string | null;
   fullName: string;
-  password: string | null;
   phoneNumber?: string | null;
   address?: string | null;
+  biography?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  bookings?: (string | Booking)[] | null;
   servicesOffered?: (string | Service)[] | null;
+  reviews?: (string | Review)[] | null;
+  slug: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -118,6 +136,7 @@ export interface User {
   hash?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
+  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -140,6 +159,21 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bookings".
+ */
+export interface Booking {
+  id: string;
+  client: string | User;
+  serviceProvider: string | User;
+  service: string | Service;
+  bookingDate: string;
+  status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "services".
  */
 export interface Service {
@@ -147,6 +181,7 @@ export interface Service {
   serviceName: string;
   description?: string | null;
   category: string | Category;
+  slug: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -158,21 +193,22 @@ export interface Category {
   id: string;
   categoryName?: string | null;
   description?: string | null;
+  slug: string;
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "bookings".
+ * via the `definition` "reviews".
  */
-export interface Booking {
+export interface Review {
   id: string;
   client: string | User;
   serviceProvider: string | User;
-  service: string | Service;
-  bookingDate: string;
-  status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
-  notes?: string | null;
+  rating: number;
+  comment?: string | null;
+  reviewDate: string;
+  slug: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -240,6 +276,7 @@ export interface Admin {
   password: string | null;
   phoneNumber?: string | null;
   address?: string | null;
+  slug: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -258,20 +295,6 @@ export interface Tag {
   id: string;
   name: string;
   description?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "reviews".
- */
-export interface Review {
-  id: string;
-  client: string | User;
-  serviceProvider: string | User;
-  rating: number;
-  comment?: string | null;
-  reviewDate: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -381,11 +404,15 @@ export interface PayloadMigration {
 export interface UsersSelect<T extends boolean = true> {
   role?: T;
   featuredImage?: T;
+  featuredImageUrl?: T;
   fullName?: T;
-  password?: T;
   phoneNumber?: T;
   address?: T;
+  biography?: T;
+  bookings?: T;
   servicesOffered?: T;
+  reviews?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -431,6 +458,7 @@ export interface MessagesSelect<T extends boolean = true> {
 export interface CategoriesSelect<T extends boolean = true> {
   categoryName?: T;
   description?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -442,6 +470,7 @@ export interface ServicesSelect<T extends boolean = true> {
   serviceName?: T;
   description?: T;
   category?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -477,6 +506,7 @@ export interface ReviewsSelect<T extends boolean = true> {
   rating?: T;
   comment?: T;
   reviewDate?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -519,6 +549,7 @@ export interface AdminsSelect<T extends boolean = true> {
   password?: T;
   phoneNumber?: T;
   address?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

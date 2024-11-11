@@ -4,7 +4,8 @@ export const Admins: CollectionConfig = {
   slug: 'admins',
   auth: true,
   admin: {
-    useAsTitle: 'firstName',
+    useAsTitle: 'email',
+    defaultColumns: ['fullName', 'email', 'role', 'address'],
   },
   fields: [
     {
@@ -41,6 +42,15 @@ export const Admins: CollectionConfig = {
     {
       name: 'address',
       type: 'text',
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      unique: true,
+      required: true, // Set to true if slug is mandatory
+      admin: {
+        position: 'sidebar',
+      },
     },
   ],
   access: {

@@ -4,6 +4,7 @@ export const Categories: CollectionConfig = {
   slug: 'categories',
   admin: {
     useAsTitle: 'categoryName',
+    defaultColumns: ['categoryName', 'slug', 'description'],
   },
   fields: [
     {
@@ -14,6 +15,15 @@ export const Categories: CollectionConfig = {
     {
       name: 'description',
       type: 'textarea',
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      unique: true,
+      required: true, // Set to true if slug is mandatory
+      admin: {
+        position: 'sidebar',
+      },
     },
   ],
 }

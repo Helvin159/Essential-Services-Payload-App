@@ -22,5 +22,14 @@ export const Services: CollectionConfig = {
       relationTo: 'categories',
       required: true,
     },
+    {
+      name: 'slug',
+      type: 'text',
+      unique: true,
+      required: true,
+      admin: {
+        position: 'sidebar',
+      },
+    },
   ],
 }
