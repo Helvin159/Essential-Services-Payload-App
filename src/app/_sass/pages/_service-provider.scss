@@ -8,6 +8,13 @@
   max-width: 90vw;
   padding: 1rem 2rem;
 
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   &__left,
   &__right {
     flex-shrink: 0;
@@ -22,11 +29,40 @@
     flex-basis: 80%;
   }
 
-  &__bio,
-  &__reviews {
+  &__details {
     max-width: 75ch;
     margin: 0 auto;
+
+    &__booking-reviews {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: start;
+      align-items: center;
+
+      @media (max-width: 768px) {
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: start;
+      }
+
+      &__card {
+        flex-basis: 50%;
+        flex-shrink: 0;
+        flex-grow: 0;
+
+        @media (max-width: 768px) {
+          flex-basis: 100%;
+          flex-shrink: 1;
+          flex-grow: 1;
+        }
+      }
+    }
   }
+
+  // &__bio,
+  // &__reviews {
+  // }
 
   &__header {
     width: 100%;

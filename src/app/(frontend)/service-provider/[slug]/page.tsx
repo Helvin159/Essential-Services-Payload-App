@@ -5,6 +5,7 @@ import React from 'react'
 import RichTextRenderer from '@/app/_components/RichTextRenderer/RichTextRenderer'
 import Image from 'next/image'
 import Reviews from './_components/Reviews/Reviews'
+import Biography from './_components/Biography/Biography'
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params
@@ -22,8 +23,6 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
       limit: 1,
     })
     .then((user) => user.docs[0])
-
-  console.log(user)
 
   return (
     <>
@@ -58,12 +57,24 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           </div>
         </div>
         <div className="service-provider-page__right">
-          <div className="service-provider-page__bio">
+          <div className="service-provider-page__details">
             <h3>About Bo</h3>
-            <h4>Biography</h4>
-            <RichTextRenderer content={user.biography} />
+            {/* Biography */}
+            <Biography user={user} />
+            {/*
+                Want to have side by side flex box here, two cards,
+                one for bookings and the other for reviews
+              */}
+            <div className="service-provider-page__details__booking-reviews">
+              <div className="service-provider-page__details__booking-reviews__card">
+                {/* Bookings */}
+              </div>
+              <div className="service-provider-page__details__booking-reviews__card">
+                {/* Reviews */}
+                {user.reviews !== undefined && <Reviews user={user} />}
+              </div>
+            </div>
           </div>
-          {user.reviews !== undefined && <Reviews user={user} />}
         </div>
       </section>
     </>
