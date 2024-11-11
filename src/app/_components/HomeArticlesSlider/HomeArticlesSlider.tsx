@@ -10,8 +10,8 @@ const HomeArticlesSlider = ({ users }: any) => {
     <Swiper spaceBetween={50} slidesPerView={3}>
       {users.map((i: any, k: number) => {
         return (
-          <SwiperSlide>
-            <Link href={`/${i.slug}`} className="home__articles__card" key={k}>
+          <SwiperSlide key={k}>
+            <Link href={`/${i.slug}`} className="home__articles__card">
               <div className="home__articles__card__header">
                 <h1>{i.title}</h1>
               </div>

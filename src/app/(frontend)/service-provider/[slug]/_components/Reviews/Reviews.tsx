@@ -6,8 +6,8 @@ const Reviews = ({ user }: any) => {
   return (
     <div className="service-provider-page__reviews">
       <h3>Reviews:</h3>
-      {user.reviews?.map((i: any) => {
-        return <ReviewCard review={i} />
+      {user.reviews?.map((i: any, k: number) => {
+        return <ReviewCard review={i} key={k} />
       })}
     </div>
   )
