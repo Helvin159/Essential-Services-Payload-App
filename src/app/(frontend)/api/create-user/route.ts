@@ -6,15 +6,15 @@ export async function POST(req: NextRequest) {
   const payload = await getPayloadHMR({ config })
 
   try {
-    const { fullName, email, password, role } = await req.json()
+    const { fullName, email, slug, role } = await req.json()
 
     const newUser = await payload.create({
       collection: 'users',
       data: {
         fullName,
         email,
-        password,
         role,
+        slug,
       },
     })
 

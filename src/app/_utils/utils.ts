@@ -4,13 +4,7 @@ import type { BasePayload } from 'payload'
 
 const payload: BasePayload = await getPayloadHMR({ config })
 
-export const createUser = async (
-  fullName: string,
-  email: string,
-  password: string,
-  role: string,
-  slug: string,
-) => {
+export const createUser = async (fullName: string, email: string, role: string, slug: string) => {
   console.log('running createUser')
 
   await fetch('/api/create-user', {
@@ -21,7 +15,6 @@ export const createUser = async (
     body: JSON.stringify({
       fullName: fullName,
       email: email,
-      password: password,
       role: role,
       slug: slug,
     }),
