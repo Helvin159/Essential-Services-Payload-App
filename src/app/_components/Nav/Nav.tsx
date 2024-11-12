@@ -32,6 +32,7 @@ const Nav = () => {
           </ul>
         </div>
         <div>
+          {loggedIn && <Link href={'/dashboard'}>Dashboard</Link>}
           {!loggedIn && <LongInButton />}
           {loggedIn && <LongOutButton />}
         </div>
