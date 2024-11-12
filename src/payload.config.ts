@@ -1,7 +1,8 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { s3Storage } from '@payloadcms/storage-s3'
 
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+// import { lexicalEditor } from '@payloadcms/richtext-lexical'
+
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -47,7 +48,7 @@ export default buildConfig({
     Media,
     Admins,
   ],
-  editor: lexicalEditor(),
+  // editor: lexicalEditor(),
   secret: process.env.NEXT_PUBLIC_REACT_APP_PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

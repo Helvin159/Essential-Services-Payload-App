@@ -1,3 +1,4 @@
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import type { CollectionConfig } from 'payload'
 
 export const Pages: CollectionConfig = {
@@ -29,6 +30,7 @@ export const Pages: CollectionConfig = {
       name: 'content',
       type: 'richText',
       required: false,
+      editor: lexicalEditor(),
     },
     {
       name: 'author',

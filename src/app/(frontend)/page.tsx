@@ -2,7 +2,6 @@ import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
 import HomeArticlesSlider from '../_components/HomeArticlesSlider/HomeArticlesSlider'
 import ServiceSearch from '../_components/ServiceSearch/ServiceSearch'
-import { createRandomUsers } from '../_utils/utils'
 
 export default async function Home() {
   const payload = await getPayloadHMR({ config })
