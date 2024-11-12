@@ -2,8 +2,8 @@
 import React from 'react'
 import Link from 'next/link'
 import { useAuthContext } from '@/app/_context/AuthContext'
-import LongInButton from './_components/LongInButton'
-import LongOutButton from './_components/LongOutButton'
+import LogInButton from './_components/LogInButton'
+import LogOutButton from './_components/LogOutButton'
 
 const Nav = () => {
   const { userCtx, loggedIn } = useAuthContext()
@@ -33,8 +33,8 @@ const Nav = () => {
         </div>
         <div>
           {loggedIn && <Link href={'/dashboard'}>Dashboard</Link>}
-          {!loggedIn && <LongInButton />}
-          {loggedIn && <LongOutButton />}
+          {!loggedIn && <LogInButton />}
+          {loggedIn && <LogOutButton />}
         </div>
       </div>
     </nav>
