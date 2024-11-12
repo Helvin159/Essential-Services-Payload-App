@@ -1,4 +1,6 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { s3Storage } from '@payloadcms/storage-s3'
+
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -22,6 +24,7 @@ const serverUrl =
   process.env.NODE_ENV === 'development'
     ? process.env.NEXT_PUBLIC_REACT_APP_LOCAL_SERVER_URL
     : process.env.NEXT_PUBLIC_REACT_APP_NETLIFY_SERVER_URL
+
 export default buildConfig({
   serverURL: serverUrl,
   admin: {
@@ -54,6 +57,19 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
-    // storage-adapter-placeholder
+    s3Storage({
+      collections: {
+        [Media.slug]: true,
+      },
+      bucket: process.env.NEXT_PUBLIC_REACT_APP_AWS_S3_BUCKET || '',
+      config: {
+        credentials: {
+          accessKeyId: process.env.NEXT_PUBLIC_REACT_APP_AWS_S3_ACCESS_KEY_ID || '',
+          secretAccessKey: process.env.NEXT_PUBLIC_REACT_APP_AWS_S3_SECRET_ACCESS_KEY || '',
+        },
+        region: process.env.NEXT_PUBLIC_REACT_APP_AWS_S3_REGION,
+        // ... Other S3 configuration
+      },
+    }),
   ],
 })

@@ -17,13 +17,18 @@
     "sass": "node-sass src/app/_sass/main.scss src/app/_assets/css/style.css -w"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.689.0",
+    "@aws-sdk/lib-storage": "^3.689.0",
     "@payloadcms/db-mongodb": "^3.0.0-beta.126",
     "@payloadcms/email-nodemailer": "^3.0.0-beta.126",
     "@payloadcms/next": "^3.0.0-beta.126",
     "@payloadcms/payload-cloud": "^3.0.0-beta.126",
+    "@payloadcms/plugin-cloud-storage": "^3.0.0-beta.126",
     "@payloadcms/richtext-lexical": "^3.0.0-beta.126",
+    "@payloadcms/storage-s3": "^3.0.0-beta.126",
     "@zapal/payload-lexical-react": "^1.5.0",
     "apexcharts": "^4.0.0",
+    "aws-crt": "^1.23.0",
     "chart.js": "^4.4.6",
     "cross-env": "^7.0.3",
     "express": "^4.21.1",
