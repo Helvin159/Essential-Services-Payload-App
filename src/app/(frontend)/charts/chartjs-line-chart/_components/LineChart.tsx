@@ -13,7 +13,7 @@ import {
   Legend,
   ChartItem,
 } from 'chart.js'
-import { chartJsDatesData, chartJsRatesData } from '@/app/_utils/interestRateData'
+import { chartJsDatesData, chartJsRatesData } from '@/App/_utils/interestRateData'
 
 Chart.register(
   CategoryScale,

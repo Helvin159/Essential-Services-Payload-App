@@ -2,7 +2,7 @@ import React from 'react'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
 import Card from './_components/Card'
-import { createRandomUsers } from '@/app/_utils/utils'
+import { createRandomUsers } from '@/App/_utils/utils'
 
 export default async function Page() {
   const payload = await getPayloadHMR({ config })
