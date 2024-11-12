@@ -1,5 +1,5 @@
 import React from 'react'
-import RichTextRenderer from '@/App/_components/RichTextRenderer/RichTextRenderer'
+import RichTextRenderer from '@/app/_components/RichTextRenderer/RichTextRenderer'
 
 const Biography = ({ user }: any) => {
   return (

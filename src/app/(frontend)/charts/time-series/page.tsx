@@ -7,7 +7,7 @@ const TimeSeriesChart = dynamic(() => import('./_components/TimeSeriesChart'), {
   ssr: false,
 })
 import './page.css'
-import { createUser } from '@/App/_utils/utils'
+import { createUser } from '@/app/_utils/utils'
 
 const page = () => {
   return (
