@@ -92,24 +92,29 @@ section {
 .service-search-wrapper {
   position: relative; }
 
-nav {
+.header-navigation {
   text-align: center;
   padding: 1rem 0 2rem; }
-  nav ul {
+  .header-navigation__link-list {
     display: flex;
-    list-style-type: none;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    padding: 0; }
-  nav a {
-    text-decoration: none;
-    color: black;
-    font-size: 1.125rem;
-    padding: 1rem;
-    text-transform: uppercase; }
-  nav a:visited {
-    color: black; }
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
+    .header-navigation__link-list ul {
+      display: flex;
+      list-style-type: none;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      padding: 0; }
+    .header-navigation__link-list a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.125rem;
+      padding: 1rem;
+      text-transform: uppercase; }
+    .header-navigation__link-list a:visited {
+      color: black; }
 
 .home__articles {
   max-width: 900px;

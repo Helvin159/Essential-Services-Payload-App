@@ -1,7 +1,7 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { s3Storage } from '@payloadcms/storage-s3'
-
-// import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
+import nodemailer from 'nodemailer'
 
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -18,6 +18,7 @@ import { Reviews } from './collections/Reviews'
 import { Admins } from './collections/Admins'
 import { Pages } from './collections/Pages'
 import { Tags } from './collections/Tags'
+import SMTPTransport from 'nodemailer/lib/smtp-transport'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,6 +26,15 @@ const serverUrl =
   process.env.NODE_ENV === 'development'
     ? process.env.NEXT_PUBLIC_REACT_APP_LOCAL_SERVER_URL
     : process.env.NEXT_PUBLIC_REACT_APP_NETLIFY_SERVER_URL
+
+const transportOptions: SMTPTransport.Options = {
+  host: process.env.NEXT_PUBLIC_REACT_APP_SMTP_HOST,
+  port: Number(process.env.NEXT_PUBLIC_REACT_APP_SMTP_PORT),
+  auth: {
+    user: process.env.NEXT_PUBLIC_REACT_APP_SMTP_USER,
+    pass: process.env.NEXT_PUBLIC_REACT_APP_SMTP_PASS,
+  },
+}
 
 export default buildConfig({
   serverURL: serverUrl,
@@ -34,6 +44,11 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+  email: nodemailerAdapter({
+    defaultFromAddress: 'helvin159@gmail.com',
+    defaultFromName: 'Helvin',
+    transport: nodemailer.createTransport(transportOptions),
+  }),
   csrf: [`${process.env.NEXT_PUBLIC_REACT_APP_LOCAL_SERVER_URL}`].filter(Boolean),
   cors: [`${process.env.NEXT_PUBLIC_REACT_APP_LOCAL_SERVER_URL}`].filter(Boolean),
   collections: [

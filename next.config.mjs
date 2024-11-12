@@ -13,6 +13,12 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'needaservice.mrrymer.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   stats: {

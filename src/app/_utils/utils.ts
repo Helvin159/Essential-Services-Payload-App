@@ -90,3 +90,25 @@ export const updateServiceProviderBooking = async () => {
     console.error('Error updating service provider bookings:', error)
   }
 }
+
+export const setCookie = (email: string, value: string, days: number) => {
+  const date = new Date()
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
+  const expires = `expires=${date.toUTCString()}`
+  // document.cookie = `${email}=${encodeURIComponent(value)};${expires};path=/`
+  let doc = `${email}=${encodeURIComponent(value)};${expires};path=/`
+  return doc
+}
+
+export const getCookie = (email: string) => {
+  const decodedCookie = decodeURIComponent(document.cookie)
+  const cookies = decodedCookie.split(';')
+  const prefix = `${email}=`
+  for (let cookie of cookies) {
+    cookie = cookie.trim()
+    if (cookie.startsWith(prefix)) {
+      return cookie.substring(prefix.length)
+    }
+  }
+  return null
+}

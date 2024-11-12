@@ -10,6 +10,8 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params
 
   const payload: BasePayload = await getPayloadHMR({ config })
+  const fallBackImg =
+    'https://needaservice.mrrymer.com/api/media/file/avatar_placeholder_neutral.jpg'
 
   const user = await payload
     .find({
@@ -32,7 +34,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         <div className="service-provider-page__left">
           <div className="">
             <Image
-              src={user.featuredImageUrl || '/api/media/file/avatar_placeholder_neutral.jpg'}
+              src={user.featuredImageUrl || fallBackImg}
               width={250}
               height={250}
               alt={`Head shot of ${user.fullName}`}
