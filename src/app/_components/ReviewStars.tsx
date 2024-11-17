@@ -22,11 +22,11 @@ const ReviewStars = ({ rating }: { rating: number }) => {
   }
 
   return (
-    <div>
+    <>
       {stars.map((i, k) => (
         <StarIcon filled={true} key={k} />
       ))}{' '}
-    </div>
+    </>
   )
 }
 

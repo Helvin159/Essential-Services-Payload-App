@@ -2,7 +2,7 @@ import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
 import React from 'react'
 import Link from 'next/link'
-import ReviewStars from './_components/ReviewStars'
+import ReviewStars from '@/app/_components/ReviewStars'
 
 const Page = async () => {
   const payload = await getPayloadHMR({ config })
