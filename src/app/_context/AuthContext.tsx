@@ -44,6 +44,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       await fetch('/api/auth/logout', { method: 'POST' })
       setUser(null)
+      setLoggedIn(false)
       router.push('/')
     } catch (error) {
       console.error('Logout error:', error)
@@ -69,7 +70,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
 
         const data = await response.json()
-        console.log(data)
 
         if (data.token.value) {
           setToken(data.token.value)

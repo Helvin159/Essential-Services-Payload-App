@@ -1,0 +1,20 @@
+.contact-provider {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  & button {
+    padding: 0.75rem;
+    width: 90%;
+    background: var(--lavender-col);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0.75px 2.25px 0 black;
+    transition: 0.03s ease-in-out;
+    cursor: pointer;
+  }
+
+  & button:active {
+    width: 89%;
+    box-shadow: 0.35px 2px 0 rgba(0, 0, 0, 0.7);
+  }
+}

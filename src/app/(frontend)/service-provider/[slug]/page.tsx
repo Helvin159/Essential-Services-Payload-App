@@ -5,6 +5,9 @@ import React from 'react'
 import Image from 'next/image'
 import Reviews from './_components/Reviews/Reviews'
 import Biography from './_components/Biography/Biography'
+import ServiceProviderCalendar from './_components/ServiceProviderCalendar/ServiceProviderCalendar'
+import ContactProvider from './_components/ContactProvider/ContactProvider'
+import ContactProviderModal from './_components/ContactProviderModal/ContactProviderModal'
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params
@@ -25,6 +28,8 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
     })
     .then((user) => user.docs[0])
 
+  console.log(user)
+
   return (
     <>
       <section className="service-provider-page__header">
@@ -42,13 +47,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             />
           </div>
           <div className="service-provider-page__contact-details">
-            <h3>Contact Details</h3>
-            <p>
-              Phone: {user.phoneNumber}
-              <br />
-              Email: {user.email}
-            </p>
-
+            <ContactProvider user={user} />
             <h3>Offered Services:</h3>
             <ul>
               {user.servicesOffered?.map((i: any, k: any) => {
@@ -69,6 +68,8 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             <div className="service-provider-page__details__booking-reviews">
               <div className="service-provider-page__details__booking-reviews__card">
                 {/* Bookings */}
+                <h3>Bookings:</h3>
+                <ServiceProviderCalendar bookings={user?.bookings} />
               </div>
               <div className="service-provider-page__details__booking-reviews__card">
                 {/* Reviews */}
@@ -78,6 +79,27 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           </div>
         </div>
       </section>
+      <ContactProviderModal id="contact-provider-modal" title={user.fullName}>
+        <form>
+          <label htmlFor=""></label>
+          <input id="to" value={user.id} type="hidden" />
+
+          <label htmlFor="contact-provider-email">Your Email</label>
+          <input id="contact-provider-email" type="email" placeholder="Email" />
+
+          <label>Service</label>
+          <select defaultValue={'Plumbing'} title="Select service">
+            {user.servicesOffered?.map((i: any) => {
+              return (
+                <option key={i.id} value={i.id}>
+                  {i.serviceName}
+                </option>
+              )
+            })}
+            <option value={'plumbing'}>Plumbing</option>
+          </select>
+        </form>
+      </ContactProviderModal>
     </>
   )
 }

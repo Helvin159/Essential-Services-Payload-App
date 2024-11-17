@@ -50,6 +50,7 @@ export const Users: CollectionConfig = {
       label: 'Email',
       type: 'email',
       required: true,
+      unique: true,
     },
     {
       name: 'phoneNumber',

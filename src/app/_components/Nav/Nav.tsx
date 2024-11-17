@@ -6,12 +6,12 @@ import LogInButton from './_components/LogInButton'
 import LogOutButton from './_components/LogOutButton'
 
 const Nav = () => {
-  const { userCtx, loggedIn } = useAuthContext()
+  const { loggedIn } = useAuthContext()
 
   return (
     <nav className="header-navigation text-center">
       <div className="header-navigation__logo">
-        <p>Home Heros</p>
+        <Link href={'/'}>Home Heros</Link>
       </div>
       <div className="header-navigation__link-list">
         <div>
