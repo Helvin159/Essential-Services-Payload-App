@@ -2,13 +2,12 @@ import React, { Fragment } from 'react'
 // import TimeSeriesChart from './_components/TimeSeriesChart'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
+import TimeSeriesContainer from './_components/TimeSeriesContainer'
 
 // @todo remove this later
-// import { interestRateData } from '../../../_utils/interestRateData'
+// import { interestRateData, refiData } from '../../../_utils/interestRateData'
 
 import './page.css'
-import dynamic from 'next/dynamic'
-import TimeSeriesContainer from './_components/TimeSeriesContainer'
 
 const page = async () => {
   const payload = await getPayloadHMR({ config })
@@ -17,10 +16,10 @@ const page = async () => {
     .find({
       collection: 'interest-rate-history',
     })
-    .then((data) => data.docs[0])
+    .then((data) => data.docs)
 
   // @todo remove this later
-  // const updatedData = interestRateData.map((item) => ({
+  // const updatedData = refiData.map((item) => ({
   //   date: item.x,
   //   interestRate: item.y,
   // }))
@@ -30,7 +29,7 @@ const page = async () => {
   // await payload.create({
   //   collection: 'interest-rate-history',
   //   data: {
-  //     loanType: 'purchase',
+  //     loanType: 'refinance',
   //     creditScoreRange: '720',
   //     interestRateData: updatedData,
   //     loanTerm: 'thirtyYear',

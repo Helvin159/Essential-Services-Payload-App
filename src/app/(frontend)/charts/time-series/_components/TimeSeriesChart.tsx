@@ -1,18 +1,21 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import ApexCharts from 'apexcharts'
+import type { InterestRateHistory } from '@/payload-types'
+// import { formatInterestRateData } from '@/app/_utils/utils'
 
 const TimeSeriesChart = ({ data }: any) => {
   const chartRef = useRef<HTMLDivElement>(null)
   const apexChartRef = useRef<ApexCharts | null>(null)
-  const [seriesData] = useState<{ x: number; y: number }[]>(
-    data.interestRateData.map((i: any) => ({
+  const [seriesData, setSeriesData] = useState<{ x: number; y: number }[]>(
+    data[0]?.interestRateData?.map((i: any) => ({
       x: new Date(i.date).getTime(),
       y: i.interestRate,
-    })),
+    })) || [],
   )
   const [chartData, setChartData] = useState<{ x: number; y: number }[]>(seriesData)
-
+  const ref = data.find((i: InterestRateHistory) => i.loanType === 'purchase')
+  console.log(ref)
   useEffect(() => {
     const series = [
       {
@@ -112,6 +115,22 @@ const TimeSeriesChart = ({ data }: any) => {
     }
   }
 
+  const updateLoanType = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const btnVal = (e.target as HTMLButtonElement).value
+    const selLoanType = data.find((i: InterestRateHistory) => i.loanType === btnVal)
+
+    console.log(selLoanType)
+    if (selLoanType) {
+      // const formattedData = formatInterestRateData(selLoanType.interestRateData)
+      const formattedData = selLoanType.interestRateData.map((i: any) => ({
+        x: new Date(i.date).getTime(),
+        y: i.interestRate,
+      }))
+      setSeriesData(formattedData)
+      setChartData(formattedData)
+    }
+  }
+
   return (
     seriesData && (
       <>
@@ -124,6 +143,13 @@ const TimeSeriesChart = ({ data }: any) => {
         </button>
         <button value={6} onClick={updateChart}>
           6 months
+        </button>
+
+        <button value={'purchase'} onClick={updateLoanType}>
+          Purchase
+        </button>
+        <button value={'refinance'} onClick={updateLoanType}>
+          Refinance
         </button>
       </>
     )

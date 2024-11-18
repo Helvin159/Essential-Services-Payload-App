@@ -112,3 +112,12 @@ export const getCookie = (email: string) => {
   }
   return null
 }
+
+export const formatInterestRateData = (arr: any) => {
+  const formatted = arr?.interestRateData?.map((i: any) => ({
+    x: new Date(i.date).getTime(),
+    y: i.interestRate,
+  }))
+
+  return formatted
+}
