@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-// import TimeSeriesChart from './_components/TimeSeriesChart'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
 import TimeSeriesContainer from './_components/TimeSeriesContainer'
