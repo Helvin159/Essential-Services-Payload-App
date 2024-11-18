@@ -2,25 +2,22 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ApexCharts from 'apexcharts'
 
-import { interestRateData } from '../../../../_utils/interestRateData'
-
-import './TimeSeriesChart.css'
-
-const TimeSeriesChart = () => {
+const TimeSeriesChart = ({ data }: any) => {
   const chartRef = useRef<HTMLDivElement>(null)
   const apexChartRef = useRef<ApexCharts | null>(null)
-  const [seriesData, setSeriesData] = useState<{ x: number; y: number }[]>(
-    interestRateData.map((i) => ({
-      x: new Date(i.x).getTime(),
-      y: i.y,
+  const [seriesData] = useState<{ x: number; y: number }[]>(
+    data.interestRateData.map((i: any) => ({
+      x: new Date(i.date).getTime(),
+      y: i.interestRate,
     })),
   )
+  const [chartData, setChartData] = useState<{ x: number; y: number }[]>(seriesData)
 
   useEffect(() => {
     const series = [
       {
         name: 'HRM',
-        data: seriesData,
+        data: chartData,
       },
     ]
     const options = {
@@ -100,37 +97,36 @@ const TimeSeriesChart = () => {
     return () => {
       if (apexChartRef.current) apexChartRef.current.destroy()
     }
-  }, [seriesData])
+  }, [chartData])
 
   const updateChart = (e: React.MouseEvent<HTMLButtonElement>) => {
     const val = Number((e.target as HTMLButtonElement).value)
-    const arr = interestRateData.map((i) => ({
-      x: new Date(i.x).getTime(),
-      y: i.y,
-    }))
+    const arr = seriesData
 
     if (val === 3) {
-      setSeriesData(arr.slice(0, arr.length / 2))
+      setChartData(arr.slice(0, arr.length / 2))
     } else if (val === 2) {
-      setSeriesData(arr.slice(0, arr.length / 3))
+      setChartData(arr.slice(0, arr.length / 3))
     } else if (val === 6) {
-      setSeriesData(arr)
+      setChartData(seriesData)
     }
   }
 
   return (
-    <>
-      <div ref={chartRef} />
-      <button value={2} onClick={updateChart}>
-        2 months
-      </button>
-      <button value={3} onClick={updateChart}>
-        3 months
-      </button>
-      <button value={6} onClick={updateChart}>
-        6 months
-      </button>
-    </>
+    seriesData && (
+      <>
+        <div ref={chartRef} />
+        <button value={2} onClick={updateChart}>
+          2 months
+        </button>
+        <button value={3} onClick={updateChart}>
+          3 months
+        </button>
+        <button value={6} onClick={updateChart}>
+          6 months
+        </button>
+      </>
+    )
   )
 }
 

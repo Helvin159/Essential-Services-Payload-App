@@ -53,35 +53,36 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await fetch('/api/get-auth-cookies', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include', // Include cookies in the request
-        })
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     try {
+  //       const response = await fetch('/api/get-auth-cookies', {
+  //         method: 'GET',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         credentials: 'include', // Include cookies in the request
+  //       })
 
-        if (!response.ok) {
-          const errorData = await response.json()
-          throw new Error(errorData.error || 'Failed to fetch user information.')
-        }
+  //       if (!response.ok) {
+  //         const errorData = await response.json()
+  //         // throw new Error(errorData.error || 'Failed to fetch user information.')
+  //         console.log(errorData.error || 'Failed to fetch user information.')
+  //       }
 
-        const data = await response.json()
+  //       const data = await response.json()
 
-        if (data.token.value) {
-          setToken(data.token.value)
-          setLoggedIn(true)
-        }
-      } catch (err) {
-        console.error(err)
-      }
-    }
+  //       if (data.token.value) {
+  //         setToken(data.token.value)
+  //         setLoggedIn(true)
+  //       }
+  //     } catch (err) {
+  //       console.error(err)
+  //     }
+  //   }
 
-    fetchUser()
-  }, [user?.token])
+  //   fetchUser()
+  // }, [user?.token])
 
   const value = { userCtx: user, login, logout, loggedIn, loading, token }
 

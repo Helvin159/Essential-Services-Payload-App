@@ -19,6 +19,7 @@ import { Admins } from './collections/Admins'
 import { Pages } from './collections/Pages'
 import { Tags } from './collections/Tags'
 import SMTPTransport from 'nodemailer/lib/smtp-transport'
+import InterestRateHistory from './collections/InterestRateHistory'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -55,6 +56,7 @@ export default buildConfig({
     Users,
     Bookings,
     Messages,
+    InterestRateHistory,
     Categories,
     Services,
     Pages,

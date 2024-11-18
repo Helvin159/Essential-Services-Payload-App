@@ -23,6 +23,21 @@ const InterestRateHistory: CollectionConfig = {
       required: true,
     },
     {
+      name: 'loanTerm',
+      type: 'select',
+      required: true,
+      options: [
+        { label: '15 Year', value: 'fifteenYear' },
+        { label: '30 Year', value: 'thirtyYear' },
+      ],
+    },
+    {
+      name: 'apr',
+      type: 'number',
+      required: false,
+      label: 'Annual Percentage Rate (APR)',
+    },
+    {
       name: 'interestRateData',
       type: 'array',
       fields: [
@@ -38,21 +53,6 @@ const InterestRateHistory: CollectionConfig = {
         },
       ],
       required: true,
-    },
-    {
-      name: 'loanTerm',
-      type: 'select',
-      required: true,
-      options: [
-        { label: '15 Year', value: 'fifteenYear' },
-        { label: '30 Year', value: 'thirtyYear' },
-      ],
-    },
-    {
-      name: 'apr',
-      type: 'number',
-      required: false,
-      label: 'Annual Percentage Rate (APR)',
     },
   ],
 }

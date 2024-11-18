@@ -1,10 +1,15 @@
-'use client'
 import React, { Fragment } from 'react'
 import LineChart from './_components/LineChart'
+import { getPayloadHMR } from '@payloadcms/next/utilities'
+import config from '@payload-config'
 
-// import './page.css'
+const page = async () => {
+  const payload = await getPayloadHMR({ config })
 
-const page = () => {
+  const res = await payload.find({
+    collection: 'interest-rate-history',
+  })
+
   return (
     <Fragment>
       <section>

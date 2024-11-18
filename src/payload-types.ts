@@ -15,6 +15,7 @@ export interface Config {
     users: User;
     bookings: Booking;
     messages: Message;
+    'interest-rate-history': InterestRateHistory;
     categories: Category;
     services: Service;
     pages: Page;
@@ -31,6 +32,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     bookings: BookingsSelect<false> | BookingsSelect<true>;
     messages: MessagesSelect<false> | MessagesSelect<true>;
+    'interest-rate-history': InterestRateHistorySelect<false> | InterestRateHistorySelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
@@ -229,6 +231,24 @@ export interface Message {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "interest-rate-history".
+ */
+export interface InterestRateHistory {
+  id: string;
+  loanType: 'purchase' | 'refinance';
+  creditScoreRange: '720' | '660-619';
+  loanTerm: 'fifteenYear' | 'thirtyYear';
+  apr?: number | null;
+  interestRateData: {
+    date: string;
+    interestRate: number;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
 export interface Page {
@@ -316,6 +336,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'messages';
         value: string | Message;
+      } | null)
+    | ({
+        relationTo: 'interest-rate-history';
+        value: string | InterestRateHistory;
       } | null)
     | ({
         relationTo: 'categories';
@@ -448,6 +472,25 @@ export interface MessagesSelect<T extends boolean = true> {
   content?: T;
   sentAt?: T;
   read?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "interest-rate-history_select".
+ */
+export interface InterestRateHistorySelect<T extends boolean = true> {
+  loanType?: T;
+  creditScoreRange?: T;
+  loanTerm?: T;
+  apr?: T;
+  interestRateData?:
+    | T
+    | {
+        date?: T;
+        interestRate?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
