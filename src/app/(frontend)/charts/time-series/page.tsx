@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import TimeSeriesChart from './_components/TimeSeriesChart'
+// import TimeSeriesChart from './_components/TimeSeriesChart'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
 
@@ -7,6 +7,8 @@ import config from '@payload-config'
 // import { interestRateData } from '../../../_utils/interestRateData'
 
 import './page.css'
+import dynamic from 'next/dynamic'
+import TimeSeriesContainer from './_components/TimeSeriesContainer'
 
 const page = async () => {
   const payload = await getPayloadHMR({ config })
@@ -42,7 +44,7 @@ const page = async () => {
         <h1>Time Series Chart</h1>
       </section>
       <section>
-        <TimeSeriesChart data={res} />
+        <TimeSeriesContainer data={res} />
       </section>
     </Fragment>
   )
