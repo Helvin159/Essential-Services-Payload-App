@@ -14,7 +14,11 @@ export interface Config {
   collections: {
     users: User;
     bookings: Booking;
+    'sales-pipeline': SalesPipeline;
+    deals: Deal;
+    contacts: Contact;
     messages: Message;
+    activities: Activity;
     'interest-rate-history': InterestRateHistory;
     categories: Category;
     services: Service;
@@ -31,7 +35,11 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     bookings: BookingsSelect<false> | BookingsSelect<true>;
+    'sales-pipeline': SalesPipelineSelect<false> | SalesPipelineSelect<true>;
+    deals: DealsSelect<false> | DealsSelect<true>;
+    contacts: ContactsSelect<false> | ContactsSelect<true>;
     messages: MessagesSelect<false> | MessagesSelect<true>;
+    activities: ActivitiesSelect<false> | ActivitiesSelect<true>;
     'interest-rate-history': InterestRateHistorySelect<false> | InterestRateHistorySelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
@@ -216,6 +224,66 @@ export interface Review {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sales-pipeline".
+ */
+export interface SalesPipeline {
+  id: string;
+  dealName: string;
+  stage: 'prospecting' | 'qualification' | 'needs_analysis' | 'proposal' | 'negotiation' | 'closed_won' | 'closed_lost';
+  assignedTo: string | User;
+  lead: string | Contact;
+  expectedCloseDate: string;
+  value: number;
+  description?: string | null;
+  notes?:
+    | {
+        note: string;
+        date: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts".
+ */
+export interface Contact {
+  id: string;
+  fullName: string;
+  email: string;
+  phone?: string | null;
+  company?: string | null;
+  position?: string | null;
+  address?: {
+    street?: string | null;
+    city?: string | null;
+    state?: string | null;
+    zipCode?: string | null;
+    country?: string | null;
+  };
+  notes?: string | null;
+  generatedBy?: (string | null) | User;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "deals".
+ */
+export interface Deal {
+  id: string;
+  dealName: string;
+  dealValue: number;
+  dealStage: 'prospecting' | 'qualification' | 'proposal' | 'negotiation' | 'closed_won' | 'closed_lost';
+  lead: string | Contact;
+  user: string | User;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "messages".
  */
 export interface Message {
@@ -226,6 +294,20 @@ export interface Message {
   content: string;
   sentAt: string;
   read?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "activities".
+ */
+export interface Activity {
+  id: string;
+  activityType: 'call' | 'email' | 'meeting';
+  dateTime: string;
+  description: string;
+  contact: string | Contact;
+  deal: string | Deal;
   updatedAt: string;
   createdAt: string;
 }
@@ -333,8 +415,24 @@ export interface PayloadLockedDocument {
         value: string | Booking;
       } | null)
     | ({
+        relationTo: 'sales-pipeline';
+        value: string | SalesPipeline;
+      } | null)
+    | ({
+        relationTo: 'deals';
+        value: string | Deal;
+      } | null)
+    | ({
+        relationTo: 'contacts';
+        value: string | Contact;
+      } | null)
+    | ({
         relationTo: 'messages';
         value: string | Message;
+      } | null)
+    | ({
+        relationTo: 'activities';
+        value: string | Activity;
       } | null)
     | ({
         relationTo: 'interest-rate-history';
@@ -462,6 +560,65 @@ export interface BookingsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sales-pipeline_select".
+ */
+export interface SalesPipelineSelect<T extends boolean = true> {
+  dealName?: T;
+  stage?: T;
+  assignedTo?: T;
+  lead?: T;
+  expectedCloseDate?: T;
+  value?: T;
+  description?: T;
+  notes?:
+    | T
+    | {
+        note?: T;
+        date?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "deals_select".
+ */
+export interface DealsSelect<T extends boolean = true> {
+  dealName?: T;
+  dealValue?: T;
+  dealStage?: T;
+  lead?: T;
+  user?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts_select".
+ */
+export interface ContactsSelect<T extends boolean = true> {
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  company?: T;
+  position?: T;
+  address?:
+    | T
+    | {
+        street?: T;
+        city?: T;
+        state?: T;
+        zipCode?: T;
+        country?: T;
+      };
+  notes?: T;
+  generatedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "messages_select".
  */
 export interface MessagesSelect<T extends boolean = true> {
@@ -471,6 +628,19 @@ export interface MessagesSelect<T extends boolean = true> {
   content?: T;
   sentAt?: T;
   read?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "activities_select".
+ */
+export interface ActivitiesSelect<T extends boolean = true> {
+  activityType?: T;
+  dateTime?: T;
+  description?: T;
+  contact?: T;
+  deal?: T;
   updatedAt?: T;
   createdAt?: T;
 }

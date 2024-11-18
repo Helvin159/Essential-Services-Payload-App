@@ -20,6 +20,10 @@ import { Pages } from './collections/Pages'
 import { Tags } from './collections/Tags'
 import SMTPTransport from 'nodemailer/lib/smtp-transport'
 import InterestRateHistory from './collections/InterestRateHistory'
+import SalesPipeline from './collections/SalesPipeline'
+import Contacts from './collections/Contacts'
+import Deals from './collections/Deals'
+import Activities from './collections/Activities'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -55,7 +59,11 @@ export default buildConfig({
   collections: [
     Users,
     Bookings,
+    SalesPipeline,
+    Deals,
+    Contacts,
     Messages,
+    Activities,
     InterestRateHistory,
     Categories,
     Services,
