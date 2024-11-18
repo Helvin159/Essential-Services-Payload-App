@@ -235,10 +235,9 @@ export interface Message {
  */
 export interface InterestRateHistory {
   id: string;
-  loanType: 'purchase' | 'refinance';
+  loanType: 'purchase' | 'refinance' | 'jumbo-purchase';
   creditScoreRange: '720' | '660-619';
   loanTerm: 'fifteenYear' | 'thirtyYear';
-  apr?: number | null;
   interestRateData: {
     date: string;
     interestRate: number;
@@ -483,7 +482,6 @@ export interface InterestRateHistorySelect<T extends boolean = true> {
   loanType?: T;
   creditScoreRange?: T;
   loanTerm?: T;
-  apr?: T;
   interestRateData?:
     | T
     | {

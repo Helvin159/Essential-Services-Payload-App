@@ -3,7 +3,7 @@ import LineChart from './_components/LineChart'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
 
-const page = async () => {
+const Page = async () => {
   const payload = await getPayloadHMR({ config })
 
   const res = await payload.find({
@@ -22,4 +22,4 @@ const page = async () => {
   )
 }
 
-export default page
+export default Page

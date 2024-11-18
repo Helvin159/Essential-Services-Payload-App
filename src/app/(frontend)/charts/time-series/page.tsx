@@ -3,12 +3,7 @@ import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
 import TimeSeriesContainer from './_components/TimeSeriesContainer'
 
-// @todo remove this later
-// import { interestRateData, refiData } from '../../../_utils/interestRateData'
-
-import './page.css'
-
-const page = async () => {
+const Page = async () => {
   const payload = await getPayloadHMR({ config })
 
   const res = await payload
@@ -17,24 +12,10 @@ const page = async () => {
     })
     .then((data) => data.docs)
 
-  // @todo remove this later
-  // const updatedData = refiData.map((item) => ({
-  //   date: item.x,
-  //   interestRate: item.y,
-  // }))
-
-  // @todo remove this later
-  // Create Interest Rate Data Points
-  // await payload.create({
-  //   collection: 'interest-rate-history',
-  //   data: {
-  //     loanType: 'refinance',
-  //     creditScoreRange: '720',
-  //     interestRateData: updatedData,
-  //     loanTerm: 'thirtyYear',
-  //     apr: 4.8,
-  //   },
-  // })
+  const interestRateHistory = await payload.collections['interest-rate-history']
+  const loanTypeFields: any = interestRateHistory.config.fields.find(
+    (i: any) => i.name === 'loanType',
+  )
 
   return (
     <Fragment>
@@ -42,10 +23,10 @@ const page = async () => {
         <h1>Time Series Chart</h1>
       </section>
       <section>
-        <TimeSeriesContainer data={res} />
+        <TimeSeriesContainer loanTypeFields={loanTypeFields?.options} data={res} />
       </section>
     </Fragment>
   )
 }
 
-export default page
+export default Page

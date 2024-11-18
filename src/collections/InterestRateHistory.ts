@@ -2,14 +2,18 @@ import type { CollectionConfig } from 'payload'
 
 const InterestRateHistory: CollectionConfig = {
   slug: 'interest-rate-history',
+  admin: {
+    defaultColumns: ['loanType', 'loanTerm', 'creditScoreRange'],
+  },
   fields: [
     {
       name: 'loanType',
       type: 'select',
       options: [
         { label: 'Purchase Loan', value: 'purchase' },
-        { label: 'Refinance Loan', value: 'refinance' },
-        // Add other loan types as needed
+        { label: 'Cash-Out Refinance', value: 'refinance' },
+        { label: 'Jumbo Purchase', value: 'jumbo-purchase' },
+        { label: 'VA Rate Reduction', value: 'jumbo-purchase' },
       ],
       required: true,
     },
@@ -30,12 +34,6 @@ const InterestRateHistory: CollectionConfig = {
         { label: '15 Year', value: 'fifteenYear' },
         { label: '30 Year', value: 'thirtyYear' },
       ],
-    },
-    {
-      name: 'apr',
-      type: 'number',
-      required: false,
-      label: 'Annual Percentage Rate (APR)',
     },
     {
       name: 'interestRateData',

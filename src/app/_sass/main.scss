@@ -2,6 +2,7 @@
 
 :root {
   --lavender-col: #c9a7f6;
+  --contact-btn-shadow: 0.75px 2.25px 0 black;
 }
 * {
   box-sizing: border-box;
@@ -43,3 +44,4 @@ section {
 @import './pages/home';
 @import './pages/our-heros';
 @import './pages/service-provider';
+@import './pages/time-series';

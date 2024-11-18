@@ -6,11 +6,11 @@ const TimeSeriesChart = dynamic(() => import('./TimeSeriesChart'), {
   ssr: false,
 })
 
-const TimeSeriesContainer = ({ data }: any) => {
+const TimeSeriesContainer = ({ loanTypeFields, data }: any) => {
   return (
-    <div>
-      <TimeSeriesChart data={data} />
-    </div>
+    <>
+      <TimeSeriesChart loanTypeFields={loanTypeFields} data={data} />
+    </>
   )
 }
 

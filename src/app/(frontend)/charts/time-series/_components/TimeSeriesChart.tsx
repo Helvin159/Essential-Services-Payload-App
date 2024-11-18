@@ -2,9 +2,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ApexCharts from 'apexcharts'
 import type { InterestRateHistory } from '@/payload-types'
-// import { formatInterestRateData } from '@/app/_utils/utils'
 
-const TimeSeriesChart = ({ data }: any) => {
+const TimeSeriesChart = ({ loanTypeFields, data }: any) => {
   const chartRef = useRef<HTMLDivElement>(null)
   const apexChartRef = useRef<ApexCharts | null>(null)
   const [seriesData, setSeriesData] = useState<{ x: number; y: number }[]>(
@@ -14,8 +13,7 @@ const TimeSeriesChart = ({ data }: any) => {
     })) || [],
   )
   const [chartData, setChartData] = useState<{ x: number; y: number }[]>(seriesData)
-  const ref = data.find((i: InterestRateHistory) => i.loanType === 'purchase')
-  console.log(ref)
+
   useEffect(() => {
     const series = [
       {
@@ -133,25 +131,27 @@ const TimeSeriesChart = ({ data }: any) => {
 
   return (
     seriesData && (
-      <>
-        <div ref={chartRef} />
-        <button value={2} onClick={updateChart}>
-          2 months
-        </button>
-        <button value={3} onClick={updateChart}>
-          3 months
-        </button>
-        <button value={6} onClick={updateChart}>
-          6 months
-        </button>
-
-        <button value={'purchase'} onClick={updateLoanType}>
-          Purchase
-        </button>
-        <button value={'refinance'} onClick={updateLoanType}>
-          Refinance
-        </button>
-      </>
+      <div className="time-series-chart">
+        <div className="time-series-chart__loan-types">
+          {loanTypeFields?.map((i: any, k: number) => (
+            <button value={i.value} onClick={updateLoanType} key={k}>
+              {i.label}
+            </button>
+          ))}
+        </div>
+        <div className="time-series-chart__chart">
+          <div ref={chartRef} />
+          <button value={2} onClick={updateChart}>
+            2 months
+          </button>
+          <button value={3} onClick={updateChart}>
+            3 months
+          </button>
+          <button value={6} onClick={updateChart}>
+            6 months
+          </button>
+        </div>
+      </div>
     )
   )
 }
