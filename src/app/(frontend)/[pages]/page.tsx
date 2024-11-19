@@ -1,5 +1,5 @@
 import React from 'react'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import config from '@payload-config'
 
 import DefaultTemplate from '@/app/_components/DefaultTemplate/DefaultTemplate'
@@ -7,7 +7,7 @@ import ArticleTemplate from '@/app/_components/ArticleTemplate/ArticleTemplate'
 import BlogTemplate from '@/app/_components/BlogTemplate/BlogTemplate'
 
 const Page = async ({ params }: { params: Promise<{ pages: string }> }) => {
-  const payload = await getPayloadHMR({ config })
+  const payload = await getPayload({ config })
   const { pages: slug } = await params
 
   const result = await payload

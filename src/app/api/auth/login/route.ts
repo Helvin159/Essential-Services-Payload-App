@@ -1,14 +1,10 @@
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import config from '@payload-config'
 import { NextRequest, NextResponse } from 'next/server'
-import { setCookie } from '../../../../_utils/utils'
-
-// vanessa.richards@example.com
 
 export async function POST(req: NextRequest) {
   const { email, password } = await req.json()
-  const payload = await getPayloadHMR({ config })
-
+  const payload = await getPayload({ config })
   try {
     const user = await payload
       .login({
@@ -22,7 +18,7 @@ export async function POST(req: NextRequest) {
     const response = NextResponse.json({ user })
 
     if (user && user.token) {
-      response.cookies.set('home-heros-com-token', user.token, {
+      response.cookies.set(process.env.NEXT_PUBLIC_REACT_APP_COOKIE_KEY || '', user.token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         path: '/',

@@ -1,10 +1,10 @@
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import config from '@payload-config'
 import HomeArticlesSlider from '../_components/HomeArticlesSlider/HomeArticlesSlider'
 import ServiceSearch from '../_components/ServiceSearch/ServiceSearch'
 
 export default async function Home() {
-  const payload = await getPayloadHMR({ config })
+  const payload = await getPayload({ config })
 
   const results = await payload
     .find({

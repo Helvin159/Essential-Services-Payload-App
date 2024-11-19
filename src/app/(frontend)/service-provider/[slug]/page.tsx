@@ -1,4 +1,4 @@
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import config from '@payload-config'
 import { BasePayload } from 'payload'
 import React from 'react'
@@ -12,7 +12,7 @@ import ContactProviderModal from './_components/ContactProviderModal/ContactProv
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params
 
-  const payload: BasePayload = await getPayloadHMR({ config })
+  const payload: BasePayload = await getPayload({ config })
   const fallBackImg =
     'https://needaservice.mrrymer.com/api/media/file/avatar_placeholder_neutral.jpg'
 

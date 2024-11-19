@@ -1,4 +1,4 @@
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import config from '@payload-config'
 import type { BasePayload } from 'payload'
 import { NextRequest, NextResponse } from 'next/server'
@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from 'next/server'
 export async function POST(req: NextRequest) {
   const { value } = await req.json()
 
-  const payload: BasePayload = await getPayloadHMR({ config })
+  const payload: BasePayload = await getPayload({ config })
 
   try {
     const matchingServices: string[] = await payload

@@ -1,4 +1,4 @@
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import config from '@payload-config'
 import type { CollectionConfig } from 'payload'
 
@@ -62,7 +62,7 @@ export const Bookings: CollectionConfig = {
   hooks: {
     afterChange: [
       async ({ doc, operation }) => {
-        const payload = await getPayloadHMR({ config })
+        const payload = await getPayload({ config })
         if (operation === 'create' && doc.serviceProvider) {
           try {
             // Retrieve the current bookings for the service provider

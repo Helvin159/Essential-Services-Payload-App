@@ -6,7 +6,7 @@ import LogInButton from './_components/LogInButton'
 import LogOutButton from './_components/LogOutButton'
 
 const Nav = () => {
-  const { loggedIn } = useAuthContext()
+  const { loggedIn, loading } = useAuthContext()
 
   return (
     <nav className="header-navigation text-center">
@@ -33,8 +33,8 @@ const Nav = () => {
         </div>
         <div>
           {loggedIn && <Link href={'/dashboard'}>Dashboard</Link>}
-          {!loggedIn && <LogInButton />}
-          {loggedIn && <LogOutButton />}
+          {!loggedIn && !loading && <LogInButton />}
+          {loggedIn && !loading && <LogOutButton />}
         </div>
       </div>
     </nav>
