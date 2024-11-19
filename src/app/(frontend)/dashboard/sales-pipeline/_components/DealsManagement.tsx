@@ -5,21 +5,27 @@ import UIkit from 'uikit'
 import Icons from 'uikit/dist/js/uikit-icons'
 
 const DealsManagement = ({ deals }: any) => {
-  const { userCtx } = useAuthContext()
+  const { userCtx, loading } = useAuthContext()
 
   const id = 'accordion'
   UIkit.use(Icons)
-  UIkit.accordion(id)
+  UIkit.accordion(`#${id}`, {
+    animation: true,
+    collapsible: false,
+    duration: 150,
+    transition: 'ease-in',
+  })
 
   console.log(deals)
-  useEffect(() => {})
+  useEffect(() => {}, [userCtx, deals])
 
   return (
     <div>
       <ul id={id}>
-        {deals.map((i: any, k: number) => {
-          if (i.assignedTo.id === userCtx.id) return <li>{i.dealName}</li>
-        })}
+        {!loading &&
+          deals.map((i: any, k: number) => {
+            if (i?.assignedTo?.id === userCtx?.id) return <li key={k}>{i.dealName}</li>
+          })}
       </ul>
     </div>
   )
