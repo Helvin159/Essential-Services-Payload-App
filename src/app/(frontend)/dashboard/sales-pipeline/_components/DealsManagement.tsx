@@ -8,13 +8,15 @@ const DealsManagement = ({ deals }: any) => {
   const { userCtx, loading } = useAuthContext()
 
   const id = 'accordion'
-  UIkit.use(Icons)
-  UIkit.accordion(`#${id}`, {
+  const options = {
     animation: true,
     collapsible: false,
     duration: 150,
     transition: 'ease-in',
-  })
+  }
+
+  UIkit.use(Icons)
+  UIkit.accordion(`#${id}`, options)
 
   console.log(deals)
   useEffect(() => {}, [userCtx, deals])
