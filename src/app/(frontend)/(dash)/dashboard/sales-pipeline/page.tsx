@@ -14,25 +14,26 @@ const Page = async () => {
 
   return (
     <>
-      <section>
-        <h1>Sales Breakdown</h1>
-      </section>
-      <section>
-        <div>
-          {/* left column */}
-          <div></div>
+      <div>
+        <section></section>
 
-          {/* Right Column */}
-          <div>
-            {/* Dashboard Elements */}
-            <div>
-              <DealsManagement />
-            </div>
-
+        <section>
+          <div className="sales-pipeline__">
+            {/* left column */}
             <div></div>
+
+            {/* Right Column */}
+            <div>
+              {/* Dashboard Elements */}
+              <div>
+                <DealsManagement />
+              </div>
+
+              <div></div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   )
 }

@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 :root {
   --lavender-col: #c9a7f6;
-  --contact-btn-shadow: 0.75px 2.25px 0 black; }
+  --contact-btn-shadow: 0.75px 2.25px 0 black;
+  --dashboard-border: 1px solid rgba(0, 0, 0, 0.269); }
 
 * {
   box-sizing: border-box;
@@ -323,6 +324,45 @@ footer {
   font-size: 1rem;
   cursor: pointer; }
 
+.service-provider-dashboard__first-glance-stats {
+  padding: 1rem 0; }
+  .service-provider-dashboard__first-glance-stats__stat {
+    background-color: rgba(214, 214, 214, 0.5);
+    padding: 0.15rem;
+    border-radius: 10px; }
+    .service-provider-dashboard__first-glance-stats__stat__numbers {
+      background-color: white;
+      padding: 0.6rem 0.5rem;
+      margin: 0.1rem 0.1rem 0;
+      text-align: left;
+      border-radius: 10px; }
+      .service-provider-dashboard__first-glance-stats__stat__numbers h3 {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+        padding: 0;
+        margin: 0;
+        font-weight: 400; }
+      .service-provider-dashboard__first-glance-stats__stat__numbers p {
+        padding: 0;
+        margin: 0; }
+    .service-provider-dashboard__first-glance-stats__stat__growth {
+      display: flex;
+      gap: 1rem;
+      padding: 0.35rem 0.3rem; }
+      .service-provider-dashboard__first-glance-stats__stat__growth p {
+        font-size: 0.8rem;
+        padding: 2.5px 0 0;
+        margin: 0; }
+        .service-provider-dashboard__first-glance-stats__stat__growth p span {
+          font-size: 0.75rem;
+          color: gray; }
+      .service-provider-dashboard__first-glance-stats__stat__growth a {
+        text-decoration: none;
+        margin: 0;
+        padding: 0;
+        color: black;
+        font-size: 1rem; }
+
 .home-header {
   width: 100%;
   text-align: center;
@@ -424,3 +464,34 @@ section {
   max-width: 900px;
   margin: 0 auto;
   text-align: center; }
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  max-width: 100vw; }
+  .dashboard-layout aside {
+    grid-column: span 2;
+    padding: 0.5rem 1rem;
+    border: var(--dashboard-border); }
+    .dashboard-layout aside ul {
+      list-style-type: none;
+      padding: 0; }
+      .dashboard-layout aside ul li {
+        display: block;
+        text-align: left; }
+  .dashboard-layout__page {
+    grid-column: span 10; }
+
+.service-provider-dashboard {
+  border-bottom: var(--dashboard-border);
+  border-right: var(--dashboard-border);
+  border-top: var(--dashboard-border);
+  padding: 0 1rem; }
+  .service-provider-dashboard__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+  .service-provider-dashboard__first-glance-stats, .service-provider-dashboard__graph-conversion {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center; }

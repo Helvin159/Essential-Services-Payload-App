@@ -3,6 +3,7 @@
 :root {
   --lavender-col: #c9a7f6;
   --contact-btn-shadow: 0.75px 2.25px 0 black;
+  --dashboard-border: 1px solid rgba(0, 0, 0, 0.269);
 }
 * {
   box-sizing: border-box;
@@ -48,9 +49,14 @@ section {
 @import './components/contact-provider';
 @import './components/time-series-chart';
 @import './components/deal-management';
+@import './components/first-glance-stats';
 
 // Pages
 @import './pages/home';
 @import './pages/our-heros';
 @import './pages/service-provider';
 @import './pages/time-series';
+@import './layout/service-provider-layout';
+
+// Templates
+@import './templates/service-provider-dashboard';

@@ -1,0 +1,19 @@
+.service-provider-dashboard {
+  border-bottom: var(--dashboard-border);
+  border-right: var(--dashboard-border);
+  border-top: var(--dashboard-border);
+  padding: 0 1rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__first-glance-stats,
+  &__graph-conversion {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
