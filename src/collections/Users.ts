@@ -109,5 +109,17 @@ export const Users: CollectionConfig = {
         position: 'sidebar',
       },
     },
+    {
+      name: 'membership',
+      label: 'Membership',
+      type: 'select',
+      options: [
+        { label: 'Basic', value: 'basic-membership' },
+        { label: 'Pro', value: 'pro-membership' },
+        { label: 'Premium Membership', value: 'premium-membership' },
+      ],
+      defaultValue: 'basic-membership',
+      required: true,
+    },
   ],
 }

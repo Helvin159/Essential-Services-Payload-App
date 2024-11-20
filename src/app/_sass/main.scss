@@ -4,7 +4,9 @@
   --lavender-col: #c9a7f6;
   --contact-btn-shadow: 0.75px 2.25px 0 black;
   --dashboard-border: 1px solid rgba(0, 0, 0, 0.269);
+  --primary-box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.2);
 }
+
 * {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
@@ -21,15 +23,17 @@ h6 {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-style: normal;
+  margin: 0;
+  padding: 0;
 }
 
 i {
   font-style: italic;
 }
 
-section {
-  max-width: 1024px;
-  margin: 0 auto;
+p {
+  margin: 0;
+  padding: 0;
 }
 
 .text-left {
@@ -50,6 +54,7 @@ section {
 @import './components/time-series-chart';
 @import './components/deal-management';
 @import './components/first-glance-stats';
+@import './components/service_provier_deals';
 
 // Pages
 @import './pages/home';

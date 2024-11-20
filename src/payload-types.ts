@@ -137,6 +137,7 @@ export interface User {
   servicesOffered?: (string | Service)[] | null;
   reviews?: (string | Review)[] | null;
   slug: string;
+  membership: 'basic-membership' | 'pro-membership' | 'premium-membership';
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -534,6 +535,7 @@ export interface UsersSelect<T extends boolean = true> {
   servicesOffered?: T;
   reviews?: T;
   slug?: T;
+  membership?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

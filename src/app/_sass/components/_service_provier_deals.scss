@@ -1,0 +1,40 @@
+#service-provider-deals {
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: var(--primary-box-shadow);
+
+  & .service-provider-deals {
+    border-bottom: var(--dashboard-border);
+    padding: 1rem 0;
+  }
+
+  & ul {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+
+    & li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+
+      padding: 1rem 0.5rem;
+
+      border-bottom: var(--dashboard-border);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      & h4 {
+        font-size: 1rem;
+      }
+
+      & .sales-stage {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

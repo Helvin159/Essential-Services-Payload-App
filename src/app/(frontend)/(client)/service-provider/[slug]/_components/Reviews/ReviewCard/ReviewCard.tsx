@@ -1,5 +1,5 @@
 import React from 'react'
-import ReviewStars from '../../../../../../_components/ReviewStars'
+import ReviewStars from '../../../../../../../_components/ReviewStars'
 
 const ReviewCard = ({ review }: any) => {
   const date = new Date(review.reviewDate)

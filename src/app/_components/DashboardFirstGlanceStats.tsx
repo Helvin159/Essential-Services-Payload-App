@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const FirstGlanceStats = () => {
+const DashboardFirstGlanceStats = () => {
   return (
     <div className="service-provider-dashboard__first-glance-stats">
       <div className="service-provider-dashboard__first-glance-stats__stat">
@@ -56,4 +56,4 @@ const FirstGlanceStats = () => {
   )
 }
 
-export default FirstGlanceStats
+export default DashboardFirstGlanceStats

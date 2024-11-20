@@ -16,4 +16,19 @@
     justify-content: space-evenly;
     align-items: center;
   }
+
+  &__graph-deals {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+
+    &__col {
+      &.one {
+        flex-basis: 65%;
+      }
+      &.two {
+        flex-basis: 35%;
+      }
+    }
+  }
 }
