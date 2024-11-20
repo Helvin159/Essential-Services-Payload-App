@@ -4,7 +4,6 @@ import { useAuthContext } from '@/app/_context/AuthContext'
 
 const DashboardServiceProviderDeals = () => {
   const { userCtx, deals, loading } = useAuthContext()
-  console.log(userCtx)
 
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',

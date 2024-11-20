@@ -3,7 +3,7 @@ import DashboardFirstGlanceStats from '../../_components/DashboardFirstGlanceSta
 import DashboardHeader from '../../_components/DashboardHeader'
 import DashboardGraphAndConversionContainer from '../../_components/DashboardGraphAndConversionContainer'
 import DashboardServiceProviderDeals from '../../_components/DashboardServiceProviderDeals'
-import DashboardServiceProviderProducts from '@/app/_components/DashboardServiceProviderProducts'
+import DashboardServiceProviderProducts from '@/app/_components/DashboardServiceProviderProducts/DashboardServiceProviderProducts'
 
 const ServiceProviderDashboard = ({ user, data }: any) => {
   console.log(user)

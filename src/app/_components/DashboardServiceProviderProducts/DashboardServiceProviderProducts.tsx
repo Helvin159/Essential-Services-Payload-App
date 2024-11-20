@@ -1,4 +1,5 @@
 import React from 'react'
+import ServiceCard from './_components/ServiceCard'
 
 const DashboardServiceProviderProducts = ({ services }: any) => {
   const formatter = new Intl.NumberFormat('en-US', {
@@ -29,13 +30,7 @@ const DashboardServiceProviderProducts = ({ services }: any) => {
         </div>
         <ul>
           {services.map((i: any, k: number) => {
-            return (
-              <li key={k}>
-                {i.serviceName}
-                <br />
-                {i.category.categoryName}
-              </li>
-            )
+            return <ServiceCard service={i} key={k} />
           })}
         </ul>
       </div>

@@ -1,16 +1,40 @@
 #service-provider-products {
   border-radius: 10px;
-  border: 1px solid black;
+  border: var(--dashboard-border);
   box-shadow: var(--primary-box-shadow);
+  text-align: center;
 
   & .service-provider-products {
     border-bottom: var(--dashboard-border);
     padding: 1rem 0;
+
+    &__search {
+      padding: 1.3rem 1rem;
+      border-bottom: var(--dashboard-border);
+      position: relative;
+      text-align: center;
+
+      & label {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      & input {
+        border: 0;
+        box-shadow: var(--primary-box-shadow);
+        border-radius: 5px;
+        width: 95%;
+        margin: 0 auto;
+        padding: 0.5rem;
+      }
+    }
   }
 
   & ul {
     width: 100%;
-    max-height: 350px;
+    max-height: 300px;
     padding: 0;
     margin: 0 auto;
     overflow-y: scroll;
