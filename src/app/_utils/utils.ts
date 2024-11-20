@@ -121,3 +121,73 @@ export const formatInterestRateData = (arr: any) => {
 
   return formatted
 }
+
+export const apexChartsOptions = {
+  chart: {
+    type: 'area',
+    stacked: false,
+    height: 350,
+    zoom: {
+      type: 'x',
+      enabled: false,
+      autoScaleYaxis: true,
+    },
+    toolbar: {
+      autoSelected: 'zoom',
+    },
+  },
+  // Line Color
+  colors: ['#000'],
+  dataLabels: {
+    enabled: false,
+  },
+  markers: {
+    size: 0,
+  },
+  title: {
+    text: '6 Month VA Mortgage Indices',
+    align: 'center',
+  },
+  fill: {
+    type: 'gradient',
+    gradient: {
+      shadeIntensity: 1,
+      inverseColors: false,
+      opacityFrom: 0.5,
+      opacityTo: 0,
+      stops: [0, 90, 100],
+    },
+  },
+  yaxis: {
+    labels: {
+      formatter: function (val: number) {
+        return val.toFixed(3) + '%'
+      },
+    },
+    title: {
+      text: 'Rate',
+    },
+    lines: {
+      show: false,
+    },
+  },
+  xaxis: {
+    type: 'datetime',
+    lines: {
+      show: true,
+    },
+  },
+  tooltip: {
+    shared: false,
+    y: {
+      forceNiceScale: true,
+      formatter: function (val: number) {
+        return val.toFixed(3)
+      },
+    },
+  },
+  stroke: {
+    width: 2,
+    curve: 'straight',
+  },
+}

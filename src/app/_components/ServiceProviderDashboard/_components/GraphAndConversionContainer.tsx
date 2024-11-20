@@ -6,8 +6,8 @@ const GraphAndConversion = dynamic(() => import('./GraphAndConversion'), {
   ssr: false,
 })
 
-const GraphAndConversionContainer = () => {
-  return <GraphAndConversion />
+const GraphAndConversionContainer = ({ data }: any) => {
+  return <GraphAndConversion data={data} />
 }
 
 export default GraphAndConversionContainer
