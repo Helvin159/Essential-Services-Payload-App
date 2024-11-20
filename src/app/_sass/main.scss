@@ -31,6 +31,14 @@ section {
   margin: 0 auto;
 }
 
+.text-left {
+  text-align: left;
+}
+
+.m-0 {
+  margin: 0;
+}
+
 // Components
 @import './components/service-search';
 @import './components/nav';
@@ -39,6 +47,7 @@ section {
 @import './components/react-calendar';
 @import './components/contact-provider';
 @import './components/time-series-chart';
+@import './components/deal-management';
 
 // Pages
 @import './pages/home';

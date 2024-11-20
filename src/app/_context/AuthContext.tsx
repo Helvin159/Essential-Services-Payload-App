@@ -96,23 +96,32 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         console.log(err, 'no token at this time.')
       }
     }
-
     fetchUser()
 
     if (window.localStorage.homeHerosComUser) {
       const userData = JSON.parse(window.localStorage.homeHerosComUser)
 
       const getDeals = async () => {
-        const response2 = await fetch('/api/find-sales-pipeline-by-assignment', {
-          method: 'POST',
+        try {
+          const response = await fetch('/api/find-sales-pipeline-by-assignment', {
+            method: 'POST',
 
-          body: JSON.stringify({ id: userData.user.id }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
+            body: JSON.stringify({ id: userData.user.id }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }).then((docs) => docs)
 
-        console.log(response2)
+          if (!response.ok) {
+            const { error } = await response.json()
+            throw new Error(error || 'Failed to fetch user information.')
+          }
+
+          const data = await response.json()
+          setDeals(data)
+        } catch (e) {
+          console.log(e)
+        }
       }
 
       getDeals()
@@ -127,7 +136,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [user?.token, token])
 
-  const value = { userCtx: user, login, logout, loggedIn, loading, token }
+  const value = { userCtx: user, deals, login, logout, loggedIn, loading, token }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

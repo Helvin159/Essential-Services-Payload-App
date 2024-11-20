@@ -18,7 +18,20 @@ const Page = async () => {
         <h1>Sales Breakdown</h1>
       </section>
       <section>
-        <DealsManagement deals={res} />
+        <div>
+          {/* left column */}
+          <div></div>
+
+          {/* Right Column */}
+          <div>
+            {/* Dashboard Elements */}
+            <div>
+              <DealsManagement />
+            </div>
+
+            <div></div>
+          </div>
+        </div>
       </section>
     </>
   )
