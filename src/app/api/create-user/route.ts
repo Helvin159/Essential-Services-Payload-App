@@ -15,6 +15,7 @@ export async function POST(req: NextRequest) {
         email,
         role,
         slug,
+        membership: 'basic-membership',
       },
     })
 

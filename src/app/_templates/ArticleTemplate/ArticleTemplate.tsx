@@ -1,5 +1,5 @@
+import RichTextRenderer from '@/app/_components/RichTextRenderer/RichTextRenderer'
 import React from 'react'
-import RichTextRenderer from '../RichTextRenderer/RichTextRenderer'
 
 const ArticleTemplate = ({ title, content }: any) => {
   return (

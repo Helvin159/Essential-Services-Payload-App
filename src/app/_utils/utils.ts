@@ -65,6 +65,7 @@ export const createRandomUsers = async () => {
         featuredImageUrl: i.picture.medium,
         phoneNumber: i.cell,
         slug: `${i.name.first.toLowerCase()}-${id}-${i.name.last.toLowerCase()}`,
+        membership: 'basic-membership',
       },
     })
   })

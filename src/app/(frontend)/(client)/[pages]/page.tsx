@@ -1,10 +1,9 @@
 import React from 'react'
 import { getPayload } from 'payload'
 import config from '@payload-config'
-
-import DefaultTemplate from '@/app/_components/DefaultTemplate/DefaultTemplate'
-import ArticleTemplate from '@/app/_components/ArticleTemplate/ArticleTemplate'
 import BlogTemplate from '@/app/_components/BlogTemplate/BlogTemplate'
+import DefaultTemplate from '@/app/_templates/DefaultTemplate/DefaultTemplate'
+import ArticleTemplate from '@/app/_templates/ArticleTemplate/ArticleTemplate'
 
 const Page = async ({ params }: { params: Promise<{ pages: string }> }) => {
   const payload = await getPayload({ config })
