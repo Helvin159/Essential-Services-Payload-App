@@ -1,8 +1,8 @@
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import config from '@payload-config'
 import type { BasePayload } from 'payload'
 
-const payload: BasePayload = await getPayloadHMR({ config })
+const payload: BasePayload = await getPayload({ config })
 
 export const createUser = async (fullName: string, email: string, role: string, slug: string) => {
   console.log('running createUser')

@@ -17,8 +17,8 @@ const DealsManagement = () => {
     transition: 'ease',
   }
 
+  UIkit.use(Icons)
   useEffect(() => {
-    UIkit.use(Icons)
     if (accordionRef.current) {
       UIkit.accordion(accordionRef.current, options)
     }

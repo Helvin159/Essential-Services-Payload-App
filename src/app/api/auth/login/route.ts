@@ -1,9 +1,7 @@
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import config from '@payload-config'
 import { NextRequest, NextResponse } from 'next/server'
-import { setCookie } from '../../../../_utils/utils'
-
-// vanessa.richards@example.com
+import { setCookie } from '@/app/_utils/utils'
 
 export async function POST(req: NextRequest) {
   const { email, password } = await req.json()
