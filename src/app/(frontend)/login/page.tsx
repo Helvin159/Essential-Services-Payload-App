@@ -33,7 +33,7 @@ const Page = () => {
             placeholder="Password"
             onChange={(e: any) => setPassword(e.target.value)}
           />
-          <input type="submit" value={'Submit'} disabled={!loading} />
+          <input type="submit" value={'Submit'} disabled={loading} />
         </form>
       </section>
       <section>
