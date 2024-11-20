@@ -26,6 +26,12 @@ section {
   max-width: 1024px;
   margin: 0 auto; }
 
+.text-left {
+  text-align: left; }
+
+.m-0 {
+  margin: 0; }
+
 :root {
   --box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
   --input-btn-height: 3rem; }
@@ -307,6 +313,15 @@ footer {
       box-shadow: var(--contact-btn-shadow);
       transition: 0.03s ease-in-out;
       cursor: pointer; }
+
+#deal-management-accordion select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  width: 20ch;
+  font-size: 1rem;
+  cursor: pointer; }
 
 .home-header {
   width: 100%;

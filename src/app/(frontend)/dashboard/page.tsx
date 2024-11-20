@@ -6,7 +6,7 @@ import { useAuthContext } from '@/app/_context/AuthContext'
 const Page = () => {
   const { userCtx } = useAuthContext()
 
-  switch (userCtx?.user.role) {
+  switch (userCtx?.role) {
     case 'client':
       return <ClientDashboardTemplate />
     default:

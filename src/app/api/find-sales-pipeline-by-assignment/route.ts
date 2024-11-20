@@ -18,9 +18,9 @@ export async function POST(req: NextRequest) {
       })
       .then((data) => data.docs)
 
-    NextResponse.json({ body: res }, { status: 200 })
+    return NextResponse.json(res, { status: 200 })
   } catch (e) {
     console.log(e)
-    NextResponse.json({ body: 'No Good' }, { status: 401 })
+    return NextResponse.json({ body: 'No Good' }, { status: 401 })
   }
 }

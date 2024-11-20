@@ -1,0 +1,11 @@
+#deal-management-accordion {
+  & select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    width: 20ch;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+}

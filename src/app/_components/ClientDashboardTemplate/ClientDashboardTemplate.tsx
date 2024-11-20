@@ -9,8 +9,8 @@ const ClientDashboardTemplate = () => {
   return (
     <>
       <section>
-        <h1>Hi! {userCtx?.user.fullName}</h1>
-        <Link href={'/sales-pipeline'}>Sales Pipeline</Link>
+        <h1>Hi! {userCtx?.fullName}</h1>
+        <Link href={'/dashboard/sales-pipeline'}>Sales Pipeline</Link>
         <p>Dashboard page</p>
       </section>
     </>

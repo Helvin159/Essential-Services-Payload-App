@@ -10,15 +10,15 @@ export async function POST(req: NextRequest) {
     const res = await payload
       .find({
         collection: 'deals',
-        // where: {
-        //   user: id,
-        // },
+        where: {
+          user: id,
+        },
       })
       .then((data) => data)
 
-    NextResponse.json({ body: res }, { status: 200 })
+    return NextResponse.json(res, { status: 200 })
   } catch (e) {
     console.error(e)
-    NextResponse.json({ body: 'Failed' }, { status: 401 })
+    return NextResponse.json({ body: 'Failed' }, { status: 401 })
   }
 }
