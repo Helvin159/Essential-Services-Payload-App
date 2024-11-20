@@ -29,7 +29,7 @@ const ServiceProviderDashboard = ({ user, data }: any) => {
         </div>
         <div className="service-provider-dashboard__graph-deals__col one">
           <ul>
-            <DashboardServiceProviderProducts services={user.servicesOffered} />
+            <DashboardServiceProviderProducts services={user?.servicesOffered} />
           </ul>
         </div>
       </section>
