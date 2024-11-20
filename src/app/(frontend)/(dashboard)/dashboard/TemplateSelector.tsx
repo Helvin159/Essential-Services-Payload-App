@@ -7,11 +7,9 @@ import ServiceProviderDashboard from '@/app/_templates/ServiceProviderDashboard/
 const TemplateSelector = ({ data }: any) => {
   const { userCtx } = useAuthContext()
 
-  console.log(userCtx)
-
   switch (userCtx?.role) {
     case 'service-provider':
-      return <ServiceProviderDashboard data={data} />
+      return <ServiceProviderDashboard user={userCtx} data={data} />
     case 'client':
       return <ClientDashboardTemplate />
     default:

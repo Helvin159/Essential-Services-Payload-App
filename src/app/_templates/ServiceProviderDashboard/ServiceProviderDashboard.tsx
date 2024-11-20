@@ -3,8 +3,10 @@ import DashboardFirstGlanceStats from '../../_components/DashboardFirstGlanceSta
 import DashboardHeader from '../../_components/DashboardHeader'
 import DashboardGraphAndConversionContainer from '../../_components/DashboardGraphAndConversionContainer'
 import DashboardServiceProviderDeals from '../../_components/DashboardServiceProviderDeals'
+import DashboardServiceProviderProducts from '@/app/_components/DashboardServiceProviderProducts'
 
-const ServiceProviderDashboard = ({ data }: any) => {
+const ServiceProviderDashboard = ({ user, data }: any) => {
+  console.log(user)
   return (
     <div className="service-provider-dashboard">
       <DashboardHeader />
@@ -26,7 +28,9 @@ const ServiceProviderDashboard = ({ data }: any) => {
           <DashboardServiceProviderDeals />
         </div>
         <div className="service-provider-dashboard__graph-deals__col one">
-          <DashboardGraphAndConversionContainer data={data} />
+          <ul>
+            <DashboardServiceProviderProducts services={user.servicesOffered} />
+          </ul>
         </div>
       </section>
     </div>
