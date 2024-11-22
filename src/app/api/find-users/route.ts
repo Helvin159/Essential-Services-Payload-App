@@ -14,7 +14,7 @@ export async function GET() {
       })
       .then((data) => data.docs)
 
-    NextResponse.json(result, { status: 200 })
+    return NextResponse.json(result, { status: 200 })
   } catch (e) {
     console.error(e)
 
